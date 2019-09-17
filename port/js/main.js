@@ -189,12 +189,24 @@ $(document).ready( function () {
 			setTimeout(function(){
 				$('body').removeClass('toFixed');
 			},2500)
-			
-
-
-
-
 		})
+
+		// $('.overlay__btn').hover(
+
+		// function(){
+		// 	if ($(window).width() > 992) {
+		// 		$('.overlay__bg').addClass('active')
+		// 	}
+		  
+		// },
+		// function(){
+		//   if ($(window).width() > 992) {
+		//   	// setTimeout(function(){
+		//   		$('.overlay__bg').removeClass('active')
+		//   	// },500)
+				
+		// 	}
+		// });
 
 		
 

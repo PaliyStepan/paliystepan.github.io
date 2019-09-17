@@ -5486,3 +5486,6 @@ body {
 
 .portfolio-block {
   background-color: #fff !important; }
+
+.portfolio-block__title, .item__title {
+  font-family: 'Roboto', sans-serif; }
