@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="js/libs/bootstrap/dist/css/bootstrap-reboot.min.css">
+		<link rel="stylesheet" href="js/libs/bootstrap/dist/css/bootstrap-grid.css">
+		<link rel="stylesheet" href="css/main.css">
+		<title>Главная страница</title>
+	</head>
+	<body>
+		<div class="mmenu_overlay jsMenuOverlay"></div>
+		
+		
+		<section class="first-section">
+			<header class="header">
+				<div class="container">
+					<div class="row	header-inner">
+						<div class="col-4 col-lg-5 header-left">
+							<div class="burger burger_header jsBurgerHeader">
+								<div class="burger-inner">
+									<div class="burger-line"></div>
+								</div>
+							</div>
+							<nav class="main-nav main-nav_header jsMainNav">
+								<div class="main-nav__top">
+									<div class="close-menu jsCloseMenu">
+									</div>
+									<img src="images/logo_text.png" alt="logo" class="logo_mmenu">
+								</div>
+								
+								<ul class="nav-list">
+									<li class="nav-item">
+										<a href="#" class="nav-link">о сайте</a>
+									</li>
+									<li class="nav-item">
+										<a href="#" class="nav-link">документация</a>
+									</li>
+									<!-- класс nav-item_hidden, скрывает на декстопе ,и показывает на мобиле -->
+									<li class="nav-item nav-item_hidden">
+										<a href="#" class="nav-link">информация для клиентов</a>
+									</li>
+									<li class="nav-item nav-item_hidden">
+										<a href="#" class="nav-link">техническая поддержка</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+						<div class="col-3 col-md-2 header-center">
+							<a href="#" class="logo">
+								<img src="images/logo_text.png" alt="logo" class="logo_img">
+							</a>
+						</div>
+						<div class="col-4 col-lg-5 header-right">
+							<div class="search jsSearch">
+								<form action="#">
+									<div class="close-search jsCloseSearch">
+									</div>
+									<div class="search-block">
+										<input type="text" placeholder="Поис по сайту">
+										<button type="submite">
+										</button>
+									</div>
+								</form>
+							</div>
+							<div class="search-btn jsSearchBtn"></div>
+						</div>
+
+					</div>
+				</div>
+			</header>
+			<div class="container">
+				<div class="first-section__inner">
+					<h1>Ваш проводник в области <br>
+						инженерных изысканий</h1>
+					<div class="popular">
+						<div class="popular-title">Часто ищут:</div>
+						<div class="popular-list">
+							<a href="#" class="popular-item">Леноблэкспертиза</a>
+							<a href="#" class="popular-item">Водопроводные сети</a>
+							<a href="#" class="popular-item">Тепловые сети</a>
+							<a href="#" class="popular-item">Водоканал</a>
+							<a href="#" class="popular-item">Нормативные документы</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<main class="main">
+			<section class="for">
+				<div class="for-item for-item_first">
+					<div class="for-item__bg" style="background-image: url(images/for_first_bg.png);"></div>
+					<div class="for-item__inner">
+						<h2>Для изыскателей</h2>
+						<ul>
+							<li><a href="#">Согласование инженерных коммуникаций</a></li>
+							<li><a href="#">Нормативные документы</a></li>
+							<li><a href="#">Органы государственного надзора</a></li>
+						</ul>
+						<a href="#" class="btn">все разделы</a>
+					</div>
+				</div>
+				<div class="for-item for-item_second">
+					<div class="for-item__bg" style="background-image: url(images/for_second_bg.png);"></div>
+					<div class="for-item__inner">
+						<h2>Для частных лиц</h2>
+						<ul>
+							<li><a href="#">Согласование инженерных коммуникаций</a></li>
+							<li><a href="#">Нормативные документы</a></li>
+							<li><a href="#">Органы государственного надзора</a></li>
+						</ul>
+						<a href="#" class="btn">все разделы</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-inner">
+					<div class="logo-footer">
+						<img src="images/logo_footer.png" alt="logo">
+					</div>
+					<nav class="main-nav main-nav_footer">
+						<ul class="nav-list">
+							<li class="nav-item">
+								<a href="#" class="nav-link">о сайте</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link">документация</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link">информация для клиентов</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link">техническая поддержка</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="burger burger_footer">
+						<div class="burger-inner">
+							<div class="burger-line"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- scripts -->
+		<script src="js/libs/jquery/dist/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
+
+
