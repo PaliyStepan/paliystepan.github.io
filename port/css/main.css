@@ -5487,5 +5487,5 @@ body {
 .portfolio-block {
   background-color: #fff !important; }
 
-.portfolio-block__title, .item__title {
+.portfolio-block__title, .item__title, .skills__text {
   font-family: 'Roboto', sans-serif; }
