@@ -4,154 +4,738 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="stylesheet" href="js/libs/bootstrap/dist/css/bootstrap-reboot.min.css">
-		<link rel="stylesheet" href="js/libs/bootstrap/dist/css/bootstrap-grid.css">
-		<link rel="stylesheet" href="css/main.css">
-		<title>Главная страница</title>
-	</head>
-	<body>
-		<div class="mmenu_overlay jsMenuOverlay"></div>
-		
-		
-		<section class="first-section">
-			<header class="header">
-				<div class="container">
-					<div class="row	header-inner">
-						<div class="col-4 col-lg-5 header-left">
-							<div class="burger burger_header jsBurgerHeader">
-								<div class="burger-inner">
-									<div class="burger-line"></div>
-								</div>
-							</div>
-							<nav class="main-nav main-nav_header jsMainNav">
-								<div class="main-nav__top">
-									<div class="close-menu jsCloseMenu">
-									</div>
-									<img src="images/logo_text.png" alt="logo" class="logo_mmenu">
-								</div>
-								
-								<ul class="nav-list">
-									<li class="nav-item">
-										<a href="#" class="nav-link">о сайте</a>
-									</li>
-									<li class="nav-item">
-										<a href="#" class="nav-link">документация</a>
-									</li>
-									<!-- класс nav-item_hidden, скрывает на декстопе ,и показывает на мобиле -->
-									<li class="nav-item nav-item_hidden">
-										<a href="#" class="nav-link">информация для клиентов</a>
-									</li>
-									<li class="nav-item nav-item_hidden">
-										<a href="#" class="nav-link">техническая поддержка</a>
-									</li>
-								</ul>
-							</nav>
-						</div>
-						<div class="col-3 col-md-2 header-center">
-							<a href="#" class="logo">
-								<img src="images/logo_text.png" alt="logo" class="logo_img">
-							</a>
-						</div>
-						<div class="col-4 col-lg-5 header-right">
-							<div class="search jsSearch">
-								<form action="#">
-									<div class="close-search jsCloseSearch">
-									</div>
-									<div class="search-block">
-										<input type="text" placeholder="Поис по сайту">
-										<button type="submite">
-										</button>
-									</div>
-								</form>
-							</div>
-							<div class="search-btn jsSearchBtn"></div>
-						</div>
+		<link rel="shortcut icon" href="images/favicon.png">
+		<link rel="apple-touch-icon" href="images/favicon.png">
+    	<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon.png">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/main.css">
+		<title>Портфолио HTML - Верстальщика / front-end разработчик</title>
+	</head>
+	<body class="toFixed">
+		<div class="progress-wrap">
+			<div class="progress-bar"></div>
+		</div>
+
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="header__inner">
+							<div class="header__right">
+
+								<button class="header__hamburger hamburger hamburger--squeeze" type="button">
+								  <span class="hamburger-box">
+								    <span class="hamburger-inner"></span>
+								  </span>
+								</button>
+																
+								<ul class="social__list">
+									<li class="social__item social__item_vk">
+										<a href="https://vk.com/paliystepan" class="social__link" target="_blank">
+											<i class="fa fa-vk socials__icon"></i>
+										</a>
+									</li>
+									<li class="social__item social__item_tg">
+										<a href="https://t.me/PalStep" class="social__link" target="_blank">
+											<i class="fa fa-telegram" socials__icon></i>
+										</a>
+									</li>
+									<li class="social__item social__item_email">
+										<a href="#" class="social__link social__link_email">
+											<i class="fa fa-envelope-o" aria-hidden="true"></i>
+										</a>
+										<ul class="social__sub-menu">
+											<li class="social__sub-item social__sub-item_gmail">
+												<a href="mailto:palstepweb@gmail.com" class="social__sub-link social__sub-link_gmail">
+													<img src="images/icons/menu__icon_gmail.svg" alt="" class="social__sub-img">
+												</a>
+											</li>
+											<li class="social__sub-item social__sub-item_mailru">
+												<a href="mailto:stepan.paliy@mail.ru" class="social__sub-link social__sub-link_mailru">
+													<img src="images/icons/menu__icon_mail.svg" alt="" class="social__sub-img">
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="social__item social__item_skype">
+										<a href="skype:paliystepan?call" class="social__link">
+											<i class="fa fa-skype" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="social__item social__item_phone">
+										<a href="tel:89502281023" class="social__link">
+											<i class="fa fa-phone" aria-hidden="true"></i>
+										</a>
+									</li>									
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
-			</header>
-			<div class="container">
-				<div class="first-section__inner">
-					<h1>Ваш проводник в области <br>
-						инженерных изысканий</h1>
-					<div class="popular">
-						<div class="popular-title">Часто ищут:</div>
-						<div class="popular-list">
-							<a href="#" class="popular-item">Леноблэкспертиза</a>
-							<a href="#" class="popular-item">Водопроводные сети</a>
-							<a href="#" class="popular-item">Тепловые сети</a>
-							<a href="#" class="popular-item">Водоканал</a>
-							<a href="#" class="popular-item">Нормативные документы</a>
+			</div>
+		</header>
+
+		<section class="overlay overlay__first">
+			<div class="overlay__desc">
+				<h2 class="overlay__bg">
+					WELCOME
+				</h2>
+				<button class="overlay__btn">нажмите для продолжения</button>
+			</div>
+			
+		</section>
+
+		<div class="overlay overlay__second"></div>
+		<div class="overlay overlay__third"></div>
+	
+	
+		<section class="parallax" id="parallax-sec">
+			
+			<div class="parallax-window" data-parallax="scroll" data-image-src="images/decoration/header_bg.jpg">
+				
+				<div class="sec__header sec__header_parallax">
+
+					<div class="avatar">
+						
+					</div>
+					<div class="sec__title sec__title_parallax">
+						Палий Степан
+					</div>
+
+			
+					<h1 class="sec__desc sec__desc_parallax">
+						Front-end разработчик
+					</h1>
+
+				</div>
+
+			</div>
+
+		</section>
+
+		<section class="skills sec" id="skills-sec">
+			
+			<div class="background__block">
+
+				<div class="background__item background__item_1 rellax" data-rellax-speed="5">
+					<img src="images/icons/adobe-photoshop.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_2 rellax" data-rellax-speed="1">
+					<img src="images/icons/css-logo.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_3 rellax" data-rellax-speed="2">
+					<img src="images/icons/git-logo.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_4 rellax" data-rellax-speed="6">
+					<img src="images/icons/gulp_dark.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_5 rellax" data-rellax-speed="7">
+					<img src="images/icons/html5.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_6 rellax" data-rellax-speed="4">
+					<img src="images/icons/icon.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_7 rellax" data-rellax-speed="2">
+					<img src="images/icons/illustrator.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_8 rellax" data-rellax-speed="6">
+					<img src="images/icons/javascript.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_9 rellax" data-rellax-speed="2">
+					<img src="images/icons/psd.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_10 rellax" data-rellax-speed="8">
+					<img src="images/icons/sass_dark.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_11 rellax" data-rellax-speed="10">
+					<img src="images/icons/adobe-photoshop.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_12 rellax" data-rellax-speed="5">
+					<img src="images/icons/css-logo.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_13 rellax" data-rellax-speed="4">
+					<img src="images/icons/git-logo.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_14 rellax" data-rellax-speed="7">
+					<img src="images/icons/gulp_dark.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_15 rellax" data-rellax-speed="3">
+					<img src="images/icons/html5.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_16 rellax" data-rellax-speed="10">
+					<img src="images/icons/icon.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_17 rellax" data-rellax-speed="13">
+					<img src="images/icons/illustrator.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_18 rellax" data-rellax-speed="9">
+					<img src="images/icons/javascript.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_19 rellax" data-rellax-speed="12">
+					<img src="images/icons/psd.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_20 rellax" data-rellax-speed="2">
+					<img src="images/icons/psd.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_21 rellax" data-rellax-speed="1">
+					<img src="images/icons/sass_dark.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_22 rellax" data-rellax-speed="3">
+					<img src="images/icons/git-logo.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_23 rellax" data-rellax-speed="5">
+					<img src="images/icons/sass_dark.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_24 rellax" data-rellax-speed="9">
+					<img src="images/icons/gulp_dark.png" alt="" class="background__img">
+				</div>
+				<div class="background__item background__item_25 rellax" data-rellax-speed="4">
+					<img src="images/icons/psd.png" alt="" class="background__img">
+				</div>
+			</div>
+
+			<div class="sec__header sec__header_skills">
+				<div class="sec__title sec__title_dark">
+					Мои профессиональные навыки
+				</div>
+				<div class="sec__desc">
+					Технологие, которые я использую в процессе разработки
+				</div>
+			</div>
+
+			<div class="skills__list">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/html-css.svg" alt="" class="skills__icon-img">
+									
+								</div>
+								<div class="skills__text">
+									Уверенные знания HTML5 и CSS3 
+								</div>
+							</div>							
 						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/sass-pug.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Использование шаблонизатора PUG + препроцессоры SASS/SCSS (variables, includes, mixins и т.д.)
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/js+jq.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Уверенные знания JavaScript и jQuery.
+									(Работа с DOM-елементами, подключение и кастомизация плагинов  slick slider, owl-carousel, parallax js и т.д.)
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/bootstrap.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Адпативная, кроссбраузерная и семантическая  верстка как с Bootstrap (v3/4), так и без него
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/php.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Знание PHP на уровне понимания работы БД
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/phAv.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Владение Photoshop,avocode, figma, Adobe XD на уровне нарезки макетов
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/bam.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Использование БЭМ нейминга
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/git.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Умение работать с системой контроля версий Git
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/gulp.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Использование таск-менеджера Gulp + командная строка (gitbash, ConEmu )
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/svg.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Работа с SVG-графикой
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/coding.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Использование Flexbox + умение обходится без Flexbox (inline, float).
+									Поддержа IE 11 (понимание особенностей верстки под него).
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-4 skills__column">
+							<div class="skills__item">
+								<div class="skills__icon">
+									<img src="images/svg/video.svg" alt="" class="skills__icon-img">
+								</div>
+								<div class="skills__text">
+									Умение и желание верстать PixelPerfect. <br>
+									Чувство прекрасного, это то, что я стремлюсь повышать.
+								</div>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<main class="main">
-			<section class="for">
-				<div class="for-item for-item_first">
-					<div class="for-item__bg" style="background-image: url(images/for_first_bg.png);"></div>
-					<div class="for-item__inner">
-						<h2>Для изыскателей</h2>
-						<ul>
-							<li><a href="#">Согласование инженерных коммуникаций</a></li>
-							<li><a href="#">Нормативные документы</a></li>
-							<li><a href="#">Органы государственного надзора</a></li>
-						</ul>
-						<a href="#" class="btn">все разделы</a>
-					</div>
-				</div>
-				<div class="for-item for-item_second">
-					<div class="for-item__bg" style="background-image: url(images/for_second_bg.png);"></div>
-					<div class="for-item__inner">
-						<h2>Для частных лиц</h2>
-						<ul>
-							<li><a href="#">Согласование инженерных коммуникаций</a></li>
-							<li><a href="#">Нормативные документы</a></li>
-							<li><a href="#">Органы государственного надзора</a></li>
-						</ul>
-						<a href="#" class="btn">все разделы</a>
-					</div>
-				</div>
-			</section>
-		</main>
+		<section class="portfolio sec" id="portfolio-sec">
+			<div class="sec__header">
+				<h2 class="sec__title">
+					Мои работы
+				</h2>
+			</div>
 
-		<footer class="footer">
-			<div class="container">
-				<div class="footer-inner">
-					<div class="logo-footer">
-						<img src="images/logo_footer.png" alt="logo">
+			<div class="portfolio-block">
+				<div class="portfolio-block__title">
+					Проекты, которые были сверстаны мной с нуля.
+				</div>
+				<div class="portfolio-block__desc">
+
+				</div>
+				
+				<div class=" portfolio__list">
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_1.png" alt="Гости любят" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_left">
+								<div class="item__desc">
+									<div class="item__title">
+										Верстка многостроничника сети апартаментов 
+										<br>
+										"Гости Любят"
+									</div>
+									<a href="https://guests.love/" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>							
+							</div>
+						</div>			
 					</div>
-					<nav class="main-nav main-nav_footer">
-						<ul class="nav-list">
-							<li class="nav-item">
-								<a href="#" class="nav-link">о сайте</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">документация</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">информация для клиентов</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">техническая поддержка</a>
-							</li>
-						</ul>
-					</nav>
-					<div class="burger burger_footer">
-						<div class="burger-inner">
-							<div class="burger-line"></div>
-						</div>
+
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_2.png" alt="JTL" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_up">
+								<div class="item__desc">
+									<div class="item__title">
+										Верстка лендинга логистической компании
+									</div>
+									<a href="http://www.jtlogistix.com/" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>	
 					</div>
+
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_3.png" alt="bauberg" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_right">
+								<div class="item__desc">
+									<div class="item__title">
+										Верстка многостроничника компании по производству строительных смесей 
+									</div>
+									<a href="https://bauberg.su" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>		
+					</div>
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_4.png" alt="fsk" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_left">
+								<div class="item__desc">
+									<div class="item__title">
+										Верстка многостроничника тендерной площадки 
+										<p class="text-alert">
+											Проект, на стадии интеграции и тестировки!!
+										</p>
+									</div>
+									<a href="http://s18987.h10.modhost.pro" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>	
+					</div>
+					
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_5.png" alt="lasercut" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_up">
+								<div class="item__desc">
+									<div class="item__title">
+										Верстка интернет-магазина по продаже лазерных станков
+										<p class="text-alert">
+											Проект, на стадии интеграции и тестировки!!
+										</p>
+									</div>
+									<a href="http://s19347.h10.modhost.pro" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>				
+					</div>
+					
 				</div>
 			</div>
-		</footer>
+
+			<div class="portfolio-block">
+				<div class="portfolio-block__title">
+					Проекты, в которых, я принимал непосредственное участие.
+					<br>
+					Переработка старых и создание новых блоков/страниц и т.д.
+				</div>
+				<div class="portfolio-block__desc">
+
+				</div>
+				
+				<div class=" portfolio__list">
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_6.png" alt="главкреп" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_right">
+								<div class="item__desc">
+									<div class="item__title">
+										Интернет-магазин крепежа и строительных материалов.
+										<br>
+										ГЛАВКРЕП
+									</div>
+									<a href="https://glavkrep.ru/" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>							
+							</div>
+						</div>			
+					</div>
+
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_7.png" alt="HIT FITNESS" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_left">
+								<div class="item__desc">
+									<div class="item__title">
+										Сеть фитнес-клубов в Приморском районе города Санкт-Петербурга.
+										<br>
+										HIT FITNESS
+									</div>
+									<a href="https://hitfitness.club/" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>	
+					</div>
+
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_8.png" alt="ALDEN GROUP" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_up">
+								<div class="item__desc">
+									<div class="item__title">
+										Производитель cистемы теплый плинтус  <br> ALDEN GROUP
+									</div>
+									<a href="http://aldengroup.ru/" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>		
+					</div>
+
+
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_9.png" alt="ЕВРАЗИЯ КРЕП" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_up">
+								<div class="item__desc">
+									<div class="item__title">
+										Интернет-магазин крепежной продукции 
+										<br>
+										ЕВРАЗИЯ КРЕП
+									</div>
+									<a href="https://eurasiakrep.ru/" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>	
+					</div>
+					
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_10.png" alt="МАТП" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_up">
+								<div class="item__desc">
+									<div class="item__title">
+										Корпоративный сайт для муниципального автотранспортного предприятия города Салехард.
+									</div>
+									<a href="https://matp-salekhard.ru/" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>				
+					</div>
+
+					<div class="portfolio__column">
+						<div class="portfolio__item">
+							<div class="portfolio__item-img-wrap">
+								<img src="images/decoration/site_11.png" alt="newtonefitness" class="portfolio__item-img">
+							</div>
+							<div class="item__layout item__layout_up">
+								<div class="item__desc">
+									<div class="item__title">
+										ФИТНЕС-ЦЕНТР NEWTONE
+									</div>
+									<a href="https://newtonefitness.ru/" class="item__link" target="_blank">
+										Посмотреть
+									</a>								
+								</div>		
+							</div>
+						</div>				
+					</div>
+					
+				</div>
+			</div>
+
+			<!-- <div class="portfolio-block">
+				<div class="portfolio-block__title portfolio-block__title_no-desc">
+					Адаптивная верстка с использованием Bootstrap 4  и  Flexbox 
+				</div>
+				<div class="portfolio__list">
+					
+					<div class="portfolio__item">
+						<div class="portfolio__item-img-wrap">
+							<img src="images/decoration/site_4.jpg" alt="" class="portfolio__item-img">
+						</div>
+						<div class="item__layout item__layout_left">
+							<div class="item__desc">
+								<div class="item__title">
+									Свободная верстка (без макета) ИМ с выгрузкой товаров из БД MySQL, сортировок товаров, созданием карточек товаров, изменение вида каталога, применение cookie, создание пагинации и.д....
+								</div>
+								<a href="sites/site_4/index.php" class="item__link" target="_blank">
+									Посмотреть
+								</a>								
+							</div>							
+						</div>
+					</div>			
+
+					<div class="portfolio__item">
+						<div class="portfolio__item-img-wrap">
+							<img src="images/decoration/site_5.jpg" alt="Верстка сайта с иcпользованием стандратных элементов Bootstrap 4" class="portfolio__item-img">
+						</div>
+						<div class="item__layout item__layout_up">
+							<div class="item__desc">
+								<div class="item__title">
+									Верстка сайта с иcпользованием стандратных элементов Bootstrap 4
+								</div>
+								<div class="item__link-wrap">
+									<a href="images/psd model/site_5.jpg" class="item__link item__link_psd" target="_blank">Макет</a>
+									<a href="sites/site_5/index.html" class="item__link" target="_blank">
+										Верстка
+									</a>	
+								</div>
+															
+							</div>		
+						</div>
+					</div>				
+
+					<div class="portfolio__item">
+						<div class="portfolio__item-img-wrap">
+							<img src="images/decoration/site_6.jpg" alt="Верстка сайта с иcпользованием стандратных элементов Bootstrap 4" class="portfolio__item-img">
+						</div>
+						<div class="item__layout item__layout_right">
+							<div class="item__desc">
+								<div class="item__title">
+									Верстка сайта с иcпользованием стандратных элементов Bootstrap 4
+								</div>								
+								<div class="item__link-wrap">
+									<a href="images/psd model/site_6.jpg" class="item__link item__link_psd" target="_blank">Макет</a>
+									<a href="sites/site_6/index.html" class="item__link" target="_blank">
+										Верстка
+									</a>	
+								</div>								
+							</div>		
+						</div>
+					</div>
+					
+				</div>	
+			</div>
+
+			<div class="portfolio-block">
+				<div class="portfolio-block__title portfolio-block__title_no-desc">
+					Адаптивная верстка <span class="underline-text">без</span> применения Bootstrap и Flexbox
+				</div>
+				<div class="portfolio__list">
+					
+					<div class="portfolio__item">
+						<div class="portfolio__item-img-wrap">
+							<img src="images/decoration/site_7.jpg" alt="Верстка сайта авиакомпании" class="portfolio__item-img">
+						</div>
+						<div class="item__layout item__layout_left">
+							<div class="item__desc">
+								<div class="item__title">
+									Верстка сайта авиакомпании
+								</div>								
+								<div class="item__link-wrap">
+									<a href="images/psd model/site_7.jpg" class="item__link item__link_psd" target="_blank">Макет</a>
+									<a href="sites/site_7/index.html" class="item__link" target="_blank">
+										Верстка
+									</a>	
+								</div>									
+							</div>							
+						</div>
+					</div>			
+
+					<div class="portfolio__item">
+						<div class="portfolio__item-img-wrap">
+							<img src="images/decoration/site_8.jpg" alt="Верстка сайта Энергосфера" class="portfolio__item-img">
+						</div>
+						<div class="item__layout item__layout_up">
+							<div class="item__desc">
+								<div class="item__title">
+									Верстка сайта Энергосфера
+								</div>
+								<div class="item__link-wrap">
+									<a href="images/psd model/site_8.jpg" class="item__link item__link_psd" target="_blank">Макет</a>
+									<a href="sites/site_8/index.html" class="item__link" target="_blank">
+										Верстка
+									</a>	
+								</div>									
+							</div>		
+						</div>
+					</div>				
+
+					<div class="portfolio__item">
+						<div class="portfolio__item-img-wrap">
+							<img src="images/decoration/site_9.jpg" alt="Верстка не сложного интернет магазина" class="portfolio__item-img">
+						</div>
+						<div class="item__layout item__layout_right">
+							<div class="item__desc">
+								<div class="item__title">
+									Верстка не сложного интернет магазина
+								</div>
+								<div class="item__link-wrap">
+									<a href="images/psd model/site_9.jpg" class="item__link item__link_psd" target="_blank">Макет</a>
+									<a href="sites/site_9/index.html" class="item__link" target="_blank">
+										Верстка
+									</a>	
+								</div>									
+							</div>		
+						</div>
+					</div>
+					
+				</div>	
+				
+			</div>	 -->	
+
+			
+
+			
+		</section>
+
+		
+
+
+		
+		
+		
+
 
 		<!-- scripts -->
-		<script src="js/libs/jquery/dist/jquery.min.js"></script>
+		
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="js/libs.min.js"></script>
 		<script src="js/main.js"></script>
+
 	</body>
 </html>
-
-
