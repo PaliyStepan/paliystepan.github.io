@@ -5484,6 +5484,12 @@ body {
   .sec__desc_parallax {
     padding: 0 20px; } }
 
+@media screen and (min-width: 2000px) {
+  .portfolio__item {
+    height: 300px; }
+  .portfolio__list {
+    width: 80%; } }
+
 .portfolio-block {
   background-color: #fff !important; }
 
