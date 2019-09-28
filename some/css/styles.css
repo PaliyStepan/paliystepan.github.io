@@ -9,6 +9,10 @@ body, html {
     box-sizing:border-box;
 }
 
+body {
+    min-width: 320px;
+}
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -477,7 +481,7 @@ table {
 }
 
 .unit.unit--regular {
-    margin-bottom: 15px ;
+    margin-bottom: 25px ;
 }
 
 .column--primary {
@@ -574,6 +578,27 @@ table {
 .story-body__inner ul {
     list-style-type: disc;
 }
+
+
+.unit_header {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.unit_img {
+    margin-right: 15px;
+    width: 50px;
+    min-width: 50px;
+    height: auto;
+}
+
+
 
 
 @media only screen and (max-width: 991px) {
