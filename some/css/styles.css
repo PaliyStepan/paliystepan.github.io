@@ -482,10 +482,19 @@ table {
 
 .unit.unit--regular {
     margin-bottom: 25px ;
+    border-bottom: 1px solid #dcdcdc;
 }
 
 .column--primary {
     margin-bottom: 40px;
+}
+
+.unit_p {
+    padding-bottom: 20px;
+}
+
+.unit_data {
+    margin-bottom: 5px;
 }
 
 .orb-footer a{
