@@ -4180,12 +4180,56 @@ input {
   background-color: rgba(141, 110, 99, 0.7); }
 
 .overlay__bg {
-  font-size: 250px;
   color: #fff;
-  opacity: 0.1;
   font-family: 'Roboto', sans-serif;
-  -webkit-animation: overlay__bg 1.5s ease;
-          animation: overlay__bg 1.5s ease; }
+  font-size: 0;
+  margin-bottom: 50px; }
+  .overlay__bg span {
+    font-size: 250px;
+    display: inline-block;
+    margin: 0 5px;
+    color: #333;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; }
+  .overlay__bg.active span {
+    -webkit-animation: animationGlow 0.5s linear;
+            animation: animationGlow 0.5s linear; }
+    .overlay__bg.active span:nth-child(2) {
+      -webkit-animation-delay: 0.2s;
+              animation-delay: 0.2s; }
+    .overlay__bg.active span:nth-child(3) {
+      -webkit-animation-delay: 0.6s;
+              animation-delay: 0.6s; }
+    .overlay__bg.active span:nth-child(4) {
+      -webkit-animation-delay: 1.0s;
+              animation-delay: 1.0s; }
+    .overlay__bg.active span:nth-child(5) {
+      -webkit-animation-delay: 1.4s;
+              animation-delay: 1.4s; }
+    .overlay__bg.active span:nth-child(6) {
+      -webkit-animation-delay: 1.8s;
+              animation-delay: 1.8s; }
+    .overlay__bg.active span:nth-child(7) {
+      -webkit-animation-delay: 2.2s;
+              animation-delay: 2.2s; }
+
+@-webkit-keyframes animationGlow {
+  0% {
+    color: #333;
+    text-shadow: none; }
+  100% {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff, 0 0 80px #fff, 0 0 120px #fff, 0 0 160px #fff; } }
+
+@keyframes animationGlow {
+  0% {
+    color: #333;
+    text-shadow: none; }
+  100% {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff, 0 0 80px #fff, 0 0 120px #fff, 0 0 160px #fff; } }
 
 @-webkit-keyframes overlay__bg {
   0% {
@@ -5066,7 +5110,7 @@ input {
 
 .skills__text {
   text-align: center;
-  background-color: rgba(207, 216, 220, 0.5);
+  background-color: rgba(207, 216, 220, 0.7);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
@@ -5368,9 +5412,13 @@ body {
 .text-alert {
   color: red; }
 
+@media only screen and (max-width: 1440px) {
+  .overlay__bg span {
+    font-size: 200px; } }
+
 @media only screen and (max-width: 1200px) {
-  .overlay__bg {
-    font-size: 150px; }
+  .overlay__bg span {
+    font-size: 160px; }
   .portfolio-block {
     padding-bottom: 100px; }
   .portfolio__column {
@@ -5378,6 +5426,8 @@ body {
     margin-bottom: 50px; } }
 
 @media only screen and (max-width: 992px) {
+  .overlay__bg span {
+    font-size: 100px; }
   .skills__item {
     padding: 0; }
   .header__hamburger {
@@ -5395,8 +5445,8 @@ body {
     background-color: #fff;
     color: #283593; }
   .header__right {
-    padding: 25px;
-    position: relative; }
+    position: relative;
+    padding: 20px; }
     .header__right:before {
       display: block;
       content: '';
@@ -5426,25 +5476,29 @@ body {
   .skills__icon {
     margin-bottom: 10px; } }
 
+@media only screen and (max-width: 800px) {
+  .portfolio__item {
+    height: 160px; } }
+
 @media only screen and (max-width: 768px) {
   .overlay__bg {
-    font-size: 110px; }
+    margin-bottom: 20px; }
+    .overlay__bg span {
+      font-size: 80px; }
   .portfolio__list {
     width: 100%; }
-  .portfolio__item {
-    height: 160px; }
   .parallax-window {
     height: auto;
     min-height: 100vh; } }
 
 @media only screen and (max-width: 576px) {
+  .overlay__bg span {
+    font-size: 60px; }
   .skills__icon {
     height: 100px; }
-  .overlay__bg {
-    font-size: 70px; }
   .overlay__btn {
-    font-size: 13px;
-    padding: 10px 12px; }
+    font-size: 11px;
+    padding: 8px 15px; }
   .portfolio__column {
     width: 100%;
     margin-bottom: 30px; }
@@ -5456,10 +5510,10 @@ body {
     padding: 20px;
     margin-right: 20px; }
   .skills {
-    padding-top: 100px;
-    padding-bottom: 100px; }
+    padding-top: 60px;
+    padding-bottom: 60px; }
   .portfolio-block__title {
-    font-size: 24px;
+    font-size: 18px;
     padding-left: 15px;
     padding-right: 15px; }
   .item__title {
@@ -5470,11 +5524,15 @@ body {
     padding-left: 5px;
     padding-right: 5px; }
   .skills__list {
-    padding-bottom: 40px; } }
+    padding-bottom: 40px; }
+  .portfolio {
+    padding: 60px 0; }
+  .portfolio-block {
+    padding: 60px 0; }
+    .portfolio-block .portfolio-block__title {
+      margin-bottom: 60px; } }
 
 @media only screen and (max-width: 480px) {
-  .overlay__bg {
-    font-size: 60px; }
   .sec__title {
     font-size: 25px; }
   .skills__icon {
@@ -5484,14 +5542,32 @@ body {
   .sec__desc_parallax {
     padding: 0 20px; } }
 
+@media only screen and (max-width: 411px) {
+  .overlay__bg span {
+    font-size: 50px; } }
+
+@media only screen and (max-width: 374px) {
+  .portfolio-block__title {
+    font-size: 16px; }
+  .overlay__bg span {
+    font-size: 40px; } }
+
 @media screen and (min-width: 2000px) {
   .portfolio__item {
     height: 300px; }
   .portfolio__list {
-    width: 80%; } }
+    width: 80%; }
+  .header .container {
+    max-width: 80%; } }
 
 .portfolio-block {
   background-color: #fff !important; }
 
 .portfolio-block__title, .item__title, .skills__text {
   font-family: 'Roboto', sans-serif; }
+
+.portfolio__item-img-wrap {
+  -webkit-background-size: cover;
+          background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top; }

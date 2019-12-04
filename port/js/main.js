@@ -30,9 +30,9 @@ $(document).ready( function () {
 		
 	})
 
-	$('.social__link_email').on('click', function(){
-		$('.social__sub-menu').toggleClass('social__sub-menu_active');
-	})
+	// $('.social__link_email').on('click', function(){
+	// 	$('.social__sub-menu').toggleClass('social__sub-menu_active');
+	// })
 
 	// hamburger
 
@@ -47,9 +47,9 @@ $(document).ready( function () {
 		$('.social__list').toggleClass('social__list_active')
 	})
 
-	$('.social__link_email').on('click', function(e){
-		e.preventDefault();
-	})
+	// $('.social__link_email').on('click', function(e){
+	// 	e.preventDefault();
+	// })
 
 
 
@@ -96,118 +96,109 @@ $(document).ready( function () {
 
 	// INTRO
 
-		$('.overlay__btn').on('click',function(){
-			TweenMax.to('.overlay__btn',1, {
-				y: -350,
-				opacity:0
-			});
+	$('.overlay__btn').on('click',function(){
+		TweenMax.to('.overlay__btn',1, {
+			y: -350,
+			opacity:0
+		});
 
-			TweenMax.to('.overlay__bg', 2, {
-				y: -400,
-				opacity:0,
-				ease: Power2.easeInOut,
-				delay: 0.3
-			});
+		TweenMax.to('.overlay__bg', 2, {
+			y: -400,
+			opacity:0,
+			ease: Power2.easeInOut,
+			delay: 0.3
+		});
 
-			TweenMax.from('.overlay__first', 2, {
-				ease: Power2.easeInOut
-			});
-
-
-			TweenMax.to('.overlay__first', 2, {
-				delay: 0.5,
-				top: "-110%",
-				ease: Expo.easeInOut
-			});
-
-			TweenMax.to('.overlay__second', 2, {
-				delay: 1,
-				top: "-110%",
-				ease: Expo.easeInOut
-			});
-
-			TweenMax.to('.overlay__third', 2, {
-				
-				delay: 1.5,
-				top: "-110%",
-				ease: Expo.easeInOut
-			});
-
-
-			TweenMax.from('.sec__header_parallax', 2, {
-				y: -100,
-				opacity:0,
-				ease: Power2.easeInOut,
-				delay: 2.0
-			});
-
-			TweenMax.to('.sec__title_parallax', 2, {
-				
-				opacity:1,
-				ease: Power2.easeInOut,
-				y: 0,
-				delay: 2.0
-			});
-
-			TweenMax.from('.sec__title_parallax', 2, {
-				y: -100,
-				opacity:0,
-				ease: Power2.easeInOut,
-				delay: 2.2
-			});
-
-			TweenMax.to('.sec__desc_parallax', 2, {
-				opacity:1,
-				ease: Power2.easeInOut,
-				y: 0,
-				delay: 2.2
-			});
-
-
-
-			// TweenMax.to('.header__right', 2, {
-			// 	opacity:1,
-			// 	ease: Power4.ease,
-			// 	y: 0,
-			// 	delay: 2.0
-			// });
-
-			// TweenMax.from('.header__right', 2, {
-			// 	x: -1000,
-			// 	opacity:0,
-			// 	ease: Power4.easeInOut,
-			// 	delay: 2.2
-			// });
-
-			TweenMax.from('.header__right', 1, {
-				opacity:0,
-				ease: Power1.easeIn,
-				x: -1000,
-				delay: 3.0
-			});
-
-			setTimeout(function(){
-				$('body').removeClass('toFixed');
-			},2500)
-		})
-
-		// $('.overlay__btn').hover(
-
-		// function(){
-		// 	if ($(window).width() > 992) {
-		// 		$('.overlay__bg').addClass('active')
-		// 	}
-		  
-		// },
-		// function(){
-		//   if ($(window).width() > 992) {
-		//   	// setTimeout(function(){
-		//   		$('.overlay__bg').removeClass('active')
-		//   	// },500)
-				
-		// 	}
+		// TweenMax.from('.overlay__first', 2, {
+		// 	ease: Power2.easeInOut
 		// });
 
+
+		TweenMax.to('.overlay__first', 2, {
+			delay: 0.5,
+			top: "-110%",
+			ease: Expo.easeInOut
+		});
+
+		TweenMax.to('.overlay__second', 2, {
+			delay: 1,
+			top: "-110%",
+			ease: Expo.easeInOut
+		});
+
+		TweenMax.to('.overlay__third', 2, {
+			delay: 1.5,
+			top: "-110%",
+			ease: Expo.easeInOut
+		});
+
+
+		TweenMax.from('.sec__header_parallax', 2, {
+			y: -100,
+			opacity:0,
+			ease: Power2.easeInOut,
+			delay: 2.0
+		});
+
+		// TweenMax.to('.sec__title_parallax', 2, {
+		// 	opacity:1,
+		// 	ease: Power2.easeInOut,
+		// 	y: 0,
+		// 	delay: 2.0
+		// });
+
+		TweenMax.from('.sec__title_parallax', 2, {
+			y: -100,
+			opacity:0,
+			ease: Power2.easeInOut,
+			delay: 2.2
+		});
+
+		TweenMax.to('.sec__desc_parallax', 2, {
+			opacity:1,
+			ease: Power2.easeInOut,
+			y: 0,
+			delay: 2.2
+		});
+
+
+
+		// TweenMax.to('.header__right', 2, {
+		// 	opacity:1,
+		// 	ease: Power4.ease,
+		// 	y: 0,
+		// 	delay: 2.0
+		// });
+
+		// TweenMax.from('.header__right', 2, {
+		// 	x: -1000,
+		// 	opacity:0,
+		// 	ease: Power4.easeInOut,
+		// 	delay: 2.2
+		// });
+
+		TweenMax.from('.header__right', 1, {
+			opacity:0,
+			ease: Power1.easeIn,
+			x: -1000,
+			delay: 3.0
+		});
+
+		setTimeout(function(){
+			$('body').removeClass('toFixed');
+		},2500)
+	})
+
+
+	if($(window).width() > 991 ) {
+		$('.overlay__btn').hover(
+			function(){
+				$('.overlay__bg').addClass('active');
+			},
+			function(){
+				$('.overlay__bg').removeClass('active');
+		});
+	}
 		
 
 	// INTRO ENDS ===============
