@@ -15,11 +15,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$(window).on('resize', function() {
-		$('.jsMenu').removeAttr('style').removeClass('active');
-		$('.jsBurger').removeClass('active');
-		$('.jsModal').removeAttr('style').removeClass('active');
-	});
+	
 
 	$('.jsMainSlider').slick({
   		infinite: true,
