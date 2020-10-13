@@ -641,9 +641,9 @@ template {
   left: 0;
   right: 0;
   z-index: 40;
-  -webkit-transition: all 0.2s ease 0.1s;
-  -o-transition: all 0.2s ease 0.1s;
-  transition: all 0.2s ease 0.1s; }
+  -webkit-transition: padding 0.2s ease 0.1s;
+  -o-transition: padding 0.2s ease 0.1s;
+  transition: padding 0.2s ease 0.1s; }
   .header__inner {
     margin: 0 auto;
     width: 100%;
