@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="theme-color" content="#fff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="preload" as="font" type="font/woff2" href="./fonts/AvenirNextCyr-Regular.woff2" crossorigin="">
+    <link rel="preload" as="font" type="font/woff2" href="./fonts/AvenirNextCyr-Demi.woff2" crossorigin="">
+    <style>/*Critical CSS*/</style>
+    <link rel="preload" href="./styles/main.css" as="style">
+    <link rel="stylesheet" href="./styles/main.css">
+  </head>
+  <body class="body">
+    <div class="body__wrapper">
+      <main>
+        <header-component class="v-cloak-opacity" inline-template v-cloak id="header">
+          <header class="section section--no--mb header">
+            <div class="section__wrapper header__wrapper" :class="{'is-active': openedSearch || openedDesktopMenu}">
+              <div class="header__row">
+                <div class="header__col header__control-row header__only--mobile"><span class="link link--color--dark-main" @click.prevent="toggleMobileMenu()">
+                    <div class="burger burger--size--big link__burger">
+                      <div class="burger__line"></div>
+                      <div class="burger__line"></div>
+                      <div class="burger__line"></div>
+                    </div></span><a class="link link--color--dark-main" href="#" @click.prevent="toggleSearch()">
+                    <svg class="icon icon--search link__icon icon--size--large">
+                      <use xlink:href="/img/sprite.svg#search-usage"></use>
+                    </svg></a>
+                </div>
+                <div class="header__col">
+                  <div class="header__logo"><a class="header__logo-link" href="/"><img src="./img/logo.svg" alt="ostec"></a>
+                    <modal class="header__logo-modal header__only--desktop"><a class="link link--color--dark-main" href="/sites-modal.html" slot="button">
+                        <svg class="icon icon--arrow-down link__icon ">
+                          <use xlink:href="/img/sprite.svg#arrow-down-usage"></use>
+                        </svg></a>
+                    </modal>
+                  </div>
+                  <div class="header__menu header__only--desktop" v-if="!openedSearch"><span class="link link--color--dark-main t-base t-base--size--medium t-base--weight--bold" @click.prevent="toggleDesktopMenu(),toggleDesktopMenuSecondLevel(false)" :class="{'is-active-burger': openedDesktopMenu}">
+                      <div class="burger link__burger">
+                        <div class="burger__line"></div>
+                        <div class="burger__line"></div>
+                        <div class="burger__line"></div>
+                      </div><span class="link__text">Меню</span></span><span class="link link--color--dark-main t-base t-base--size--medium" @click.prevent="toggleDesktopMenuSecondLevel(true),toggleDesktopMenu()" v-if="!openedDesktopMenu"><span class="link__text">Материалы</span></span><a class="link link--color--dark-main t-base t-base--size--medium" href="#" v-if="!openedDesktopMenu"><span class="link__text">Услуги</span></a><a class="link link--color--dark-main t-base t-base--size--medium" href="#" v-if="!openedDesktopMenu"><span class="link__text">База знаний</span></a>
+                  </div>
+                </div>
+                <div class="header__col header__control-row" :class="{'header__search-hidden':openedSearch}"><a class="link link--color--dark-25 t-base t-base--weight--bold t-base--size--small header__lang header__only--desktop" href="#"><span class="link__text">ENG</span></a>
+                  <modal><a class="link link--color--dark-main header__call" href="/callback-modal.html" slot="button">
+                      <svg class="icon icon--phone link__icon icon--size--large">
+                        <use xlink:href="/img/sprite.svg#phone-usage"></use>
+                      </svg></a>
+                  </modal>
+                  <tooltip class="header__only--desktop"><a class="link link--color--dark-main header__user" href="#" slot="button" data-vue-tooltip="user-tooltip">
+                      <svg class="icon icon--user link__icon icon--size--large">
+                        <use xlink:href="/img/sprite.svg#user-usage"></use>
+                      </svg></a>
+                    <script type="text/template" data-vue-tooltip-content="user-tooltip" slot="tooltip">
+                      <div class="tooltip">
+                        <div class="tooltip__body">
+                          <div class="v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Личный кабинет</span></a>
+                          </div>
+                          <div class="v-indent"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Мои запросы</span></a>
+                          </div>
+                        </div>
+                        <div class="tooltip__footer"><a class="link link--color--dark-55 t-base t-base--size--medium" href="#">
+                            <svg class="icon icon--logout link__icon link__icon--left ">
+                              <use xlink:href="/img/sprite.svg#logout-usage"></use>
+                            </svg><span class="link__text">Выйти</span></a>
+                        </div>
+                      </div>
+                    </script>
+                  </tooltip>
+                  <div class="link link--color--dark-main link--only-icon header__cart">
+                    <svg class="icon icon--cart icon--size--large">
+                      <use xlink:href="/img/sprite.svg#cart-usage"></use>
+                    </svg>
+                    <div class="link__counter" v-if="cart.count">{{cart.count}}</div>
+                  </div><a class="link link--color--dark-main header__only--desktop" href="#" @click.prevent="toggleSearch()">
+                    <svg class="icon icon--search link__icon icon--size--large">
+                      <use xlink:href="/img/sprite.svg#search-usage"></use>
+                    </svg></a>
+                </div>
+                <div class="header__col header__control-row header__search-close" v-if="openedSearch"><span class="link link--color--dark-55" @click.prevent="toggleSearch()">
+                    <svg class="icon icon--cross link__icon link__icon--left ">
+                      <use xlink:href="/img/sprite.svg#cross-usage"></use>
+                    </svg><span class="link__text">Закрыть</span></span>
+                </div>
+                <transition name="search-down">
+                  <div class="header__search" v-if="openedSearch">
+                    <search-form :search-data="{placeholder: 'Поиск', actionURL: '/static/fakedata/search/searchHeader.json'}" :toggle-search="toggleSearch"></search-form>
+                    <div class="header__search-overlay" @click.prevent="toggleSearch()"></div>
+                  </div>
+                </transition>
+              </div>
+            </div>
+            <desktop-menu class="section__wrapper" inline-template :is-opened="openedDesktopMenu" :opened-second-level="openedDesktopMenuSecondLevel">
+              <div class="desktop-menu" :class="{'is-opened': isOpened}">
+                <div class="desktop-menu__wrapper" ref="ps">
+                  <div class="desktop-menu__first-level v-indent v-indent--blue">
+                    <div class="desktop-menu__first-level-list">
+                      <div class="desktop-menu__first-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h2" href="#" @click="onMenuItemClick($event)"><span class="link__text">Материалы</span></a>
+                      </div>
+                      <transition name="absolute-slide-left">
+                        <div v-if="!openedSecondLevel">
+                          <div class="desktop-menu__first-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h2" href="#"><span class="link__text">Услуги</span></a>
+                          </div>
+                          <div class="desktop-menu__first-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h2" href="#"><span class="link__text">База знаний</span></a>
+                          </div>
+                          <div class="desktop-menu__first-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h2" href="#"><span class="link__text">События</span></a>
+                          </div>
+                          <div class="desktop-menu__first-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h2" href="#"><span class="link__text">Новости</span></a>
+                          </div>
+                          <div class="desktop-menu__first-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h2" href="#"><span class="link__text">О нас</span></a>
+                          </div>
+                          <div class="desktop-menu__first-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h2" href="#"><span class="link__text">Контакты</span></a>
+                          </div>
+                        </div>
+                      </transition>
+                    </div>
+                  </div>
+                  <transition name="slide-right">
+                    <div class="desktop-menu__second-level" v-if="openedSecondLevel">
+                      <div class="row row--gap--60">
+                        <div class="col desktop-menu__second-level-list">
+                          <div class="desktop-menu__second-level-group">
+                            <div class="desktop-menu__second-level-item v-indent v-indent--yellow"><a class="link t-base t-base--size--h5" href="#" @mouseenter="hoverItem(0, $event)" @mouseleave="hover = null" :class="activeMenuIndex!==0?'link--color--dark-main':''"><span class="link__text">Для микроэлектроники</span>
+                                <svg class="icon icon--arrow-right link__icon ">
+                                  <use xlink:href="/img/sprite.svg#arrow-right-usage"></use>
+                                </svg></a>
+                            </div>
+                            <div class="desktop-menu__second-level-item v-indent v-indent--yellow"><a class="link t-base t-base--size--h5" href="#" @mouseenter="hoverItem(1, $event)" @mouseleave="hover = null" :class="activeMenuIndex!==1?'link--color--dark-main':''"><span class="link__text">Для производства солнечных модулей</span>
+                                <svg class="icon icon--arrow-right link__icon ">
+                                  <use xlink:href="/img/sprite.svg#arrow-right-usage"></use>
+                                </svg></a>
+                            </div>
+                            <div class="desktop-menu__second-level-item v-indent v-indent--yellow"><a class="link t-base t-base--size--h5" href="#" @mouseenter="hoverItem(2, $event)" @mouseleave="hover = null" :class="activeMenuIndex!==2?'link--color--dark-main':''"><span class="link__text">Для сборки электронных модулей</span>
+                                <svg class="icon icon--arrow-right link__icon ">
+                                  <use xlink:href="/img/sprite.svg#arrow-right-usage"></use>
+                                </svg></a>
+                            </div>
+                            <div class="desktop-menu__second-level-item v-indent v-indent--yellow"><a class="link t-base t-base--size--h5" href="#" @mouseenter="hoverItem(3, $event)" @mouseleave="hover = null" :class="activeMenuIndex!==3?'link--color--dark-main':''"><span class="link__text">Для склеивания, заливки и герметизации</span>
+                                <svg class="icon icon--arrow-right link__icon ">
+                                  <use xlink:href="/img/sprite.svg#arrow-right-usage"></use>
+                                </svg></a>
+                            </div>
+                            <div class="desktop-menu__second-level-item v-indent v-indent--yellow"><a class="link t-base t-base--size--h5" href="#" @mouseenter="hoverItem(4, $event)" @mouseleave="hover = null" :class="activeMenuIndex!==4?'link--color--dark-main':''"><span class="link__text">Бренды</span>
+                                <svg class="icon icon--arrow-right link__icon ">
+                                  <use xlink:href="/img/sprite.svg#arrow-right-usage"></use>
+                                </svg></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col desktop-menu__third-level">
+                          <transition name="fade" mode="out-in">
+                            <div class="desktop-menu__third-level-list" :key="0" v-if="activeMenuIndex===0">
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж1</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="desktop-menu__third-level-list" :key="1" v-if="activeMenuIndex===1">
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж2</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="desktop-menu__third-level-list" :key="2" v-if="activeMenuIndex===2">
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="desktop-menu__third-level-list" :key="3" v-if="activeMenuIndex===3">
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="desktop-menu__third-level-list" :key="4" v-if="activeMenuIndex===4">
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                              <div class="desktop-menu__third-level-group v-indent v-indent--blue">
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--h5" href="#"><span class="link__text">Поверхностный монтаж</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Бумага для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки оборудования</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Жидкости для очистки трафаретов</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Защитный паяльный резист</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Накладные заправочные концы</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Паяльная паста</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Припои в виде преформ/фольги/ленты</span></a>
+                                </div>
+                                <div class="desktop-menu__third-level-item v-indent v-indent--yellow"><a class="link link--color--dark-main t-base t-base--size--medium" href="#"><span class="link__text">Соединение и удлинение лент в питателях</span></a>
+                                </div>
+                              </div>
+                            </div>
+                          </transition>
+                        </div>
+                      </div>
+                    </div>
+                  </transition>
+                </div>
+                <transition name="slide-right">
+                  <div class="desktop-menu__back" v-if="openedSecondLevel"><span class="link link--color--dark-55 t-base t-base--size--h5" @click.prevent="toggleSecondLevel(false), scrollToTop()">
+                      <svg class="icon icon--arrow-right link__icon link__icon--left icon--rotate--180">
+                        <use xlink:href="/img/sprite.svg#arrow-right-usage"></use>
+                      </svg><span class="link__text">Назад</span></span>
+                  </div>
+                </transition>
+                <transition name="absolute-slide-left">
+                  <div class="desktop-menu__info" v-if="!openedSecondLevel">
+                    <div class="desktop-menu__info-group">
+                      <div class="t-base t-base--size--large t-base--color--dark-55 v-indent v-indent--blue">Всегда рады ответить на все ваши вопросы</div>
+                      <div class="v-indent v-indent--orange"><a class="link t-base t-base--size--large" href="#"><span class="link__text">+7 495 788-44-44</span></a>
+                      </div><a class="link link--color--dark-55 t-base t-base--size--large" href="#"><span class="link__text">section-nav@ostec-group.ru</span></a>
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </desktop-menu>
+            <mobile-menu :is-opened="openedMobileMenu" :data="mobileMenuData"></mobile-menu>
+            <div class="is-overlay" @click.prevent="toggleMobileMenu()" :class="{'is-active':openedMobileMenu}"></div>
+          </header>
+        </header-component>
+        <div class="first-screen-slider" data-under-block-container>
+          <div class="first-screen-slider__container swiper-container" data-slider="{
+                &quot;speed&quot;: 700,
+                &quot;effect&quot;: &quot;fade&quot;,
+                &quot;fadeEffect&quot;: {
+                    &quot;crossFade&quot;: true
+                }
+            }">
+            <div class="swiper-wrapper">
+              <div class="first-screen-slider__slide swiper-slide">
+                <div class="first-screen-slider__info">
+                  <div class="first-screen-slider__text">
+                    <div class="first-screen-slider__title t-base t-base--size--h1 v-indent v-indent--yellow">Мы знаем<br>о материалах <span class="first-screen-slider__title-mark t-base t-base--color--green-main">всё</span></div>
+                    <div class="t-base t-base--size--medium t-base--color--dark-55">Обеспечиваем комплексные и стабильные поставки, содействуем развитию предприятий, обеспечиваем технологическую поддержку</div>
+                  </div>
+                  <div class="first-screen-slider__facts"> 
+                    <div class="row row--gap--40">
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">25</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           лет поставки материалов для производства электроники</div>
+                      </div>
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">60</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           сервис-инженеров обеспечивают тех. поддержку</div>
+                      </div>
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">20</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           обучающих тренингов и вебинаров за прошедший год</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="first-screen-slider__img"><img src="/img/first-slider/img.webp" alt="slide_img"></div>
+              </div>
+              <div class="first-screen-slider__slide swiper-slide">
+                <div class="first-screen-slider__info">
+                  <div class="first-screen-slider__text">
+                    <div class="first-screen-slider__title t-base t-base--size--h1 v-indent v-indent--yellow">Мы знаем<br>о материалах <span class="first-screen-slider__title-mark t-base t-base--color--green-main">всё</span></div>
+                    <div class="t-base t-base--size--medium t-base--color--dark-55">Обеспечиваем комплексные и стабильные поставки, содействуем развитию предприятий, обеспечиваем технологическую поддержку</div>
+                  </div>
+                  <div class="first-screen-slider__facts"> 
+                    <div class="row row--gap--40">
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">25</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           лет поставки материалов для производства электроники</div>
+                      </div>
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">60</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           сервис-инженеров обеспечивают тех. поддержку</div>
+                      </div>
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">20</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           обучающих тренингов и вебинаров за прошедший год</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="first-screen-slider__img"><img src="/img/first-slider/img.webp" alt="slide_img"></div>
+              </div>
+              <div class="first-screen-slider__slide swiper-slide">
+                <div class="first-screen-slider__info">
+                  <div class="first-screen-slider__text">
+                    <div class="first-screen-slider__title t-base t-base--size--h1 v-indent v-indent--yellow">Мы знаем<br>о материалах <span class="first-screen-slider__title-mark t-base t-base--color--green-main">всё</span></div>
+                    <div class="t-base t-base--size--medium t-base--color--dark-55">Обеспечиваем комплексные и стабильные поставки, содействуем развитию предприятий, обеспечиваем технологическую поддержку</div>
+                  </div>
+                  <div class="first-screen-slider__facts"> 
+                    <div class="row row--gap--40">
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">25</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           лет поставки материалов для производства электроники</div>
+                      </div>
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">60</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           сервис-инженеров обеспечивают тех. поддержку</div>
+                      </div>
+                      <div class="col">
+                        <div class="first-screen-slider__fact-number">20</div>
+                        <div class="t-base t-base--size--medium t-base--color--dark-55">
+                           обучающих тренингов и вебинаров за прошедший год</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="first-screen-slider__img"><img src="/img/first-slider/img.webp" alt="slide_img"></div>
+              </div>
+            </div>
+            <div class="slider-arrows first-screen-slider__arrows">
+              <div class="row row--gap--40">
+                <div class="col-auto"><span class="link slider-arrows__btn slider-arrows__btn--prev swiper-button-prev" data-slider-navigation-left>
+                    <svg class="icon icon--arrow-long-left link__icon icon--size--large icon--stroke--dark">
+                      <use xlink:href="/img/sprite.svg#arrow-long-left-usage"></use>
+                    </svg></span>
+                </div>
+                <div class="col-auto"><span class="link slider-arrows__btn slider-arrows__btn--next swiper-button-next" data-slider-navigation-right>
+                    <svg class="icon icon--arrow-long-right link__icon icon--size--large icon--stroke--dark">
+                      <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                    </svg></span>
+                </div>
+              </div>
+            </div>
+            <div class="slider-dots first-screen-slider__dots" data-slider-pagination>
+              <div class="slider-dots__item slider-dots__item--active"></div>
+              <div class="slider-dots__item"></div>
+              <div class="slider-dots__item"></div>
+            </div>
+            <div class="first-screen-slider__count">
+              <div class="first-screen-slider__count-value">0</div>
+              <div class="first-screen-slider__count-value" data-slider-count>1</div>
+            </div>
+          </div>
+          <div class="first-screen-slider__under-bottom" data-under-block><span class="link">
+              <svg class="icon icon--arrow-long-right link__icon icon--rotate--90 icon--size--xl icon--stroke--dark">
+                <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+              </svg></span>
+          </div>
+        </div>
+        <section class="section materials-group materials-group--tile">
+          <div class="section__wrapper">
+            <div class="section__container">
+              <div class="section__title">
+                <h2 class="t-base t-base--size--h2">Группы материалов</h2>
+              </div>
+              <div class="materials-group__row row row--gap--60" data-in-sight>
+                <div class="materials-group__col col-6 col-sm-3 animation-slide-up is-init-animation">
+                  <div class="materials-group__item"><a class="materials-group__link" href="#">
+                      <div class="materials-group__img-wrap">
+                        <div class="materials-group__img" style="background-image: url('../img/materials-group/materials-group_1.jpg')"></div>
+                      </div>
+                      <div class="materials-group__title t-base t-base--size--title-5">Материалы для микроэлектроники</div></a></div>
+                </div>
+                <div class="materials-group__col col-6 col-sm-3 animation-slide-up is-init-animation">
+                  <div class="materials-group__item"><a class="materials-group__link" href="#">
+                      <div class="materials-group__img-wrap">
+                        <div class="materials-group__img" style="background-image: url('../img/materials-group/materials-group_2.jpg')"></div>
+                      </div>
+                      <div class="materials-group__title t-base t-base--size--title-5">Материалы для производства солнечных модулей</div></a></div>
+                </div>
+                <div class="materials-group__col col-6 col-sm-3 animation-slide-up is-init-animation">
+                  <div class="materials-group__item"><a class="materials-group__link" href="#">
+                      <div class="materials-group__img-wrap">
+                        <div class="materials-group__img" style="background-image: url('../img/materials-group/materials-group_3.jpg')"></div>
+                      </div>
+                      <div class="materials-group__title t-base t-base--size--title-5">Материалы для сборки электронных модулей</div></a></div>
+                </div>
+                <div class="materials-group__col col-6 col-sm-3 animation-slide-up is-init-animation">
+                  <div class="materials-group__item"><a class="materials-group__link" href="#">
+                      <div class="materials-group__img-wrap">
+                        <div class="materials-group__img" style="background-image: url('../img/materials-group/materials-group_4.jpg')"></div>
+                      </div>
+                      <div class="materials-group__title t-base t-base--size--title-5">Материалы для склеивания, заливки и герметизации</div></a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section announcings">
+          <div class="slider-block announcings__slider-block">
+            <div class="slider-block__init swiper-container" data-slider="{
+				&quot;slidesPerView&quot;: 1,
+				&quot;spaceBetween&quot;: 20,
+				&quot;pagination&quot;: {
+					&quot;el&quot;: &quot;[data-slider-pagination='announcings']&quot;,
+					&quot;type&quot;: &quot;bullets&quot;,
+					&quot;bulletClass&quot;: &quot;slider-dots__item&quot;,
+					&quot;bulletActiveClass&quot;: &quot;slider-dots__item--active&quot;,
+					&quot;clickable&quot;: true
+				},
+				&quot;navigation&quot;: {
+					&quot;nextEl&quot;: &quot;[data-slider-navigation-right='announcings']&quot;,
+					&quot;prevEl&quot;: &quot;[data-slider-navigation-left='announcings']&quot;
+				},
+				&quot;breakpoints&quot;: {
+					&quot;768&quot;: {
+						&quot;slidesPerView&quot;: &quot;auto&quot;,
+						&quot;slidesOffsetAfter&quot;: 20,
+						&quot;slidesOffsetBefore&quot;: 20
+					},
+					&quot;1024&quot;: {
+						&quot;slidesPerView&quot;: &quot;auto&quot;,
+						&quot;slidesOffsetAfter&quot;: 60,
+						&quot;slidesOffsetBefore&quot;: 60
+					},
+					&quot;1260&quot;: {
+						&quot;slidesPerView&quot;: &quot;auto&quot;,
+						&quot;spaceBetween&quot;: 40,
+						&quot;slidesOffsetAfter&quot;: 40,
+						&quot;slidesOffsetBefore&quot;: 40
+					},
+					&quot;1440&quot;: {
+						&quot;slidesPerView&quot;: &quot;auto&quot;,
+						&quot;spaceBetween&quot;: 60,
+						&quot;slidesOffsetAfter&quot;: 50,
+						&quot;slidesOffsetBefore&quot;: 50
+					}
+				}
+			}">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide slider-block__slide">
+                  <div class="announcing announcing--slide"><a class="announcing__link" href="#">
+                      <div class="announcing__inner" style="background-image: url('../img/announcings/announcings_1.jpg')">
+                        <div class="announcing__info">
+                          <div class="t-base t-base--weight--bold announcing__title">Нет спирта? <br> Есть <span class="t-base--color--green-main">Zestron!</span></div>
+                          <div class="t-base announcing__desc">
+                            Жидкость для очистки Zestron всегда на&nbsp;складе
+                            в&nbsp;любых объемах
+                          </div>
+                        </div>
+                      </div></a></div>
+                </div>
+                <div class="swiper-slide slider-block__slide">
+                  <div class="announcing announcing--slide"><a class="announcing__link" href="#">
+                      <div class="announcing__inner" style="background-image: url('../img/announcings/announcings_2.jpg')">
+                        <div class="announcing__info">
+                          <div class="t-base t-base--weight--bold announcing__title">Мы знаем как</div>
+                          <div class="t-base announcing__desc"> Обеспечить доступ к&nbsp;мировым достижениям в&nbsp;области материалов</div>
+                        </div>
+                      </div></a></div>
+                </div>
+                <div class="swiper-slide slider-block__slide">
+                  <div class="announcing announcing--slide"><a class="announcing__link" href="#">
+                      <div class="announcing__inner" style="background-image: url('../img/announcings/announcings_1.jpg')">
+                        <div class="announcing__info">
+                          <div class="t-base t-base--weight--bold announcing__title">Нет спирта? <br> Есть <span class="t-base--color--green-main">Zestron!</span></div>
+                          <div class="t-base announcing__desc">
+                            Жидкость для очистки Zestron всегда на&nbsp;складе
+                            в&nbsp;любых объемах
+                          </div>
+                        </div>
+                      </div></a></div>
+                </div>
+                <div class="swiper-slide slider-block__slide">
+                  <div class="announcing announcing--slide"><a class="announcing__link" href="#">
+                      <div class="announcing__inner" style="background-image: url('../img/announcings/announcings_2.jpg')">
+                        <div class="announcing__info">
+                          <div class="t-base t-base--weight--bold announcing__title">Мы знаем как</div>
+                          <div class="t-base announcing__desc"> Обеспечить доступ к&nbsp;мировым достижениям в&nbsp;области материалов</div>
+                        </div>
+                      </div></a></div>
+                </div>
+              </div>
+            </div>
+            <div class="section__wrapper">
+              <div class="section__container">
+                <div class="slider-block__controls">
+                  <div class="row row--gap--40 slider-arrows slider-block__arrows">
+                    <div class="col-auto"><span class="link slider-arrows__btn slider-arrows__btn--prev swiper-button-prev" data-slider-navigation-left="announcings">
+                                        <svg class="icon icon--arrow-long-left link__icon icon--size--large icon--stroke--dark">
+                                          <use xlink:href="/img/sprite.svg#arrow-long-left-usage"></use>
+                                        </svg></span>
+                    </div>
+                    <div class="col-auto"><span class="link slider-arrows__btn slider-arrows__btn--next swiper-button-next" data-slider-navigation-right="announcings">
+                                        <svg class="icon icon--arrow-long-right link__icon icon--size--large icon--stroke--dark">
+                                          <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                                        </svg></span>
+                    </div>
+                  </div>
+                  <div class="slider-dots slider-block__dots swiper-pagination" data-slider-pagination="announcings">
+                    <div class="slider-dots__item"></div>
+                    <div class="slider-dots__item slider-dots__item--active"></div>
+                    <div class="slider-dots__item"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section--mb catalog-new-items">
+          <div class="section__wrapper">
+            <div class="section__container">
+              <div class="section__title">
+                <h2 class="t-base t-base--size--h2">Новинки в каталоге</h2>
+              </div>
+            </div>
+          </div>
+          <div class="slider-block catalog-new-items__slider-block">
+            <div class="slider-block__init swiper-container" data-slider="{
+					&quot;slidesPerView&quot;: 1,
+					&quot;autoHeight&quot;: true,
+					&quot;pagination&quot;: {
+						&quot;el&quot;: &quot;[data-slider-pagination='catalog-new-items']&quot;,
+						&quot;type&quot;: &quot;bullets&quot;,
+						&quot;bulletClass&quot;: &quot;slider-dots__item&quot;,
+						&quot;bulletActiveClass&quot;: &quot;slider-dots__item--active&quot;,
+						&quot;clickable&quot;: true
+					},
+					&quot;breakpoints&quot;: {
+						&quot;1260&quot;: {
+							&quot;slidesPerView&quot;: &quot;auto&quot;,
+							&quot;freeMode&quot;: true,
+							&quot;navigation&quot;: {
+								&quot;nextEl&quot;: &quot;[data-slider-navigation-right='catalog-new-items']&quot;,
+								&quot;prevEl&quot;: &quot;[data-slider-navigation-left='catalog-new-items']&quot;
+							}
+						}
+					}
+				}">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">PicoShot™C-1</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Гель-кондиционер</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span><span class="t-base--size--medium t-base--weight--bold tech-block__desc">1,6mb</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">Indium 8.9 HF  <br> Pico Shot™C-1</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">бессвинцовая с флюсом, не требующим отмывки</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span><span class="t-base--size--medium t-base--weight--bold tech-block__desc">1,6mb</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">Indium12.8HF</div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Паяльная паста для микродозирующих и каплеструйных систем</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span><span class="t-base--size--medium t-base--weight--bold tech-block__desc">1,6mb</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">PicoShot™ NC-5M</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Паяльная паста для каплеструйных систем нанесения</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="skeleton-block skeleton-block--slide d-none d-lg-block">
+                    <div class="skeleton-block__inner">
+                      <div class="skeleton-block__body">
+                        <div class="skeleton-item skeleton-item--bdrs"></div>
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item skeleton-item--lg"></div>
+                      </div>
+                      <div class="skeleton-block__footer">
+                        <div class="skeleton-item skeleton-item--sm"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skeleton-block skeleton-block--slide d-none d-lg-block">
+                    <div class="skeleton-block__inner">
+                      <div class="skeleton-block__body">
+                        <div class="skeleton-item skeleton-item--bdrs"></div>
+                        <div class="skeleton-item"></div>
+                        <div class="skeleton-item skeleton-item--lg"></div>
+                      </div>
+                      <div class="skeleton-block__footer">
+                        <div class="skeleton-item skeleton-item--sm"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">Indium 8.9 HF</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">бессвинцовая с флюсом, не требующим отмывки</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span><span class="t-base--size--medium t-base--weight--bold tech-block__desc">1,6mb</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">Indium12.8HF</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Паяльная паста для микродозирующих и каплеструйных систем</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span><span class="t-base--size--medium t-base--weight--bold tech-block__desc">1,6mb</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">PicoShot™ NC-5M</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Паяльная паста для каплеструйных систем нанесения</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">PicoShot™ NC-5M</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Паяльная паста для каплеструйных систем нанесения</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">Indium 8.9 HF</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">бессвинцовая с флюсом, не требующим отмывки</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span><span class="t-base--size--medium t-base--weight--bold tech-block__desc">1,6mb</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">Indium12.8HF</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Паяльная паста для микродозирующих и каплеструйных систем</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span><span class="t-base--size--medium t-base--weight--bold tech-block__desc">1,6mb</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">PicoShot™ NC-5M</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Паяльная паста для каплеструйных систем нанесения</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">PicoShot™ NC-5M</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">Паяльная паста для каплеструйных систем нанесения</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                                      <svg class="icon icon--pdf icon--size--large icon--color--base link__icon tech-block__icon">
+                                        <use xlink:href="/img/sprite.svg#pdf-usage"></use>
+                                      </svg>
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-block card-block--news-catalog card-block--slide">
+                    <div class="card-block__inner">
+                      <div class="card-block__col card-block__col--1"><a class="card-block__header" href="#">
+                          <div class="card-block__header-inner">
+                            <div class="card-block__header-top">
+                              <div class="t-base t-base--size--h4 card-block__title">Indium 8.9 HF</div>
+                              <div class="card-block__labels">
+                                <div class="row row--gap--10 flex-wrap">
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--yellow-main">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Новинка</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <div class="label-item label-item--bg--gray label-item--text--green">
+                                      <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Eco</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-block__header-bottom">
+                              <div class="t-base t-base--size--medium card-block__desc">бессвинцовая с флюсом, не требующим отмывки</div>
+                            </div>
+                          </div></a></div>
+                      <div class="card-block__col card-block__col--2">
+                        <div class="card-block__bottom">
+                          <div class="tech-block"><a class="link tech-block__link" href="#">
+                              <div class="tech-block__info"><span class="t-base--size--medium t-base--weight--bold link__text tech-block__text">Техническое описание (TDS)</span><span class="t-base--size--medium t-base--weight--bold tech-block__desc">1,6mb</span></div></a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section__wrapper">
+              <div class="section__container">
+                <div class="slider-block__controls">
+                  <div class="row row--gap--40 slider-arrows slider-block__arrows">
+                    <div class="col-auto"><span class="link slider-arrows__btn slider-arrows__btn--prev swiper-button-prev" data-slider-navigation-left="catalog-new-items">
+                                        <svg class="icon icon--arrow-long-left link__icon icon--size--large icon--stroke--dark">
+                                          <use xlink:href="/img/sprite.svg#arrow-long-left-usage"></use>
+                                        </svg></span>
+                    </div>
+                    <div class="col-auto"><span class="link slider-arrows__btn slider-arrows__btn--next swiper-button-next" data-slider-navigation-right="catalog-new-items">
+                                        <svg class="icon icon--arrow-long-right link__icon icon--size--large icon--stroke--dark">
+                                          <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                                        </svg></span>
+                    </div>
+                  </div>
+                  <div class="slider-dots slider-block__dots swiper-pagination" data-slider-pagination="catalog-new-items">
+                    <div class="slider-dots__item"></div>
+                    <div class="slider-dots__item slider-dots__item--active"></div>
+                    <div class="slider-dots__item"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section--inner news animation-cubes" data-animation-cubes>
+          <div class="section__wrapper">
+            <div class="section__container">
+              <div class="section__title section__title--flex">
+                <h2 class="t-base t-base--size--h2"> Новости</h2>
+                <div class="section__link d-none d-sm-block"><a class="link link--animation" href="#"><span class="link__text t-base--size--medium t-base--weight--bold">Все новости</span>
+                            <svg class="icon icon--arrow-long-right link__icon icon--size--xl icon--stroke--green-main">
+                              <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                            </svg></a></div>
+              </div>
+              <div class="section__main">
+                <div class="slider-block slider-block--custom">
+                  <div class="row row--gap--60 slider-block__init slider-block__init--custom" data-in-sight>
+                    <div class="col-auto col-md-4 col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news" href="#">
+                        <div class="card-block__inner">
+                          <div class="card-block__labels">
+                            <div class="row row--gap--10 flex-wrap">
+                              <div class="col-auto">
+                                        <div class="label-item label-item--bg--gray label-item--text--gray">
+                                          <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Ostec</div>
+                                        </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="t-base t-base--size--large card-block__desc">Приглашаем принять участие в тренинге IPC «Критерии качества электронных сборок» в г. Санкт-Петербург</div>
+                          <div class="t-base--size--medium t-base--weight--bold t-base--color--green-main link__text">10 декабря 2020</div>
+                        </div></a></div>
+                    <div class="col-auto col-md-4 col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news" href="#">
+                        <div class="card-block__inner">
+                          <div class="card-block__labels">
+                            <div class="row row--gap--10 flex-wrap">
+                              <div class="col-auto">
+                                        <div class="label-item label-item--bg--gray label-item--text--gray">
+                                          <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Ostec</div>
+                                        </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="t-base t-base--size--large card-block__desc">Приглашаем принять участие в тренинге IPC «Критерии качества электронных сборок»</div>
+                          <div class="t-base--size--medium t-base--weight--bold t-base--color--green-main link__text">3 декабря 2020</div>
+                        </div></a></div>
+                    <div class="col-auto col-md-4 col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news" href="#">
+                        <div class="card-block__inner">
+                          <div class="card-block__labels">
+                            <div class="row row--gap--10 flex-wrap">
+                              <div class="col-auto">
+                                        <div class="label-item label-item--bg--gray label-item--text--gray">
+                                          <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Ostec</div>
+                                        </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="t-base t-base--size--large card-block__desc">Приглашаем принять участие в тренинге IPC «Критерии качества электронных сборок»</div>
+                          <div class="t-base--size--medium t-base--weight--bold t-base--color--green-main link__text">3 декабря 2020</div>
+                        </div></a></div>
+                    <div class="col-auto col-md-4 d-md-none d-xxl-block col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news" href="#">
+                        <div class="card-block__inner">
+                          <div class="card-block__labels">
+                            <div class="row row--gap--10 flex-wrap">
+                              <div class="col-auto">
+                                        <div class="label-item label-item--bg--gray label-item--text--gray">
+                                          <div class="t-base t-base--size--medium t-base--weight--bold label-item__text">Ostec</div>
+                                        </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="t-base t-base--size--large card-block__desc">Приглашаем принять участие в тренинге IPC «Критерии качества электронных сборок» в г. Санкт-Петербург</div>
+                          <div class="t-base--size--medium t-base--weight--bold t-base--color--green-main link__text">10 декабря 2020</div>
+                        </div></a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="section__link d-sm-none"><a class="link link--animation" href="#"><span class="link__text t-base--size--medium t-base--weight--bold">Все новости</span>
+                          <svg class="icon icon--arrow-long-right link__icon icon--size--xl icon--stroke--green-main">
+                            <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                          </svg></a></div>
+            </div>
+          </div>
+        </section>
+        <section class="section publications">
+          <div class="section__wrapper">
+            <div class="section__container">
+              <div class="section__title section__title--flex">
+                <h2 class="t-base t-base--size--h2">Полезные публикации</h2>
+                <div class="section__link d-none d-sm-block"><a class="link link--animation" href="#"><span class="link__text t-base--size--medium t-base--weight--bold">Все публикации</span>
+                            <svg class="icon icon--arrow-long-right link__icon icon--size--xl icon--stroke--green-main">
+                              <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                            </svg></a></div>
+              </div>
+              <div class="section__main">
+                <div class="row row--gap--60 publications__row" data-in-sight>
+                  <div class="col-12 col-sm-6 col-xxl-4 publications__col animation-slide-up is-init-animation"><a class="publication-card" href="/youtube-modal.html" data-modal>
+                      <div class="publication-card__inner">
+                        <div class="publication-card__top">
+                                  <svg class="icon icon--play-button icon--size--xxl icon--color--white publication-card__icon">
+                                    <use xlink:href="/img/sprite.svg#play-button-usage"></use>
+                                  </svg>
+                          <div class="publication-card__img-wrap">
+                            <div class="publication-card__img" style="background-image: url('../img/publications/publications_1.jpg')"></div>
+                          </div>
+                        </div>
+                        <div class="publication-card__body">
+                          <div class="t-base t-base--size--medium t-base--weight--bold t-base--color--green-main publication-card__title">Влагозащитные покрытия</div>
+                          <div class="t-base t-base--size--title-3 publication-card__desc">Понимание термина паропроницаемости влагозащитных покрытий</div>
+                        </div>
+                      </div></a></div>
+                  <div class="col-12 col-sm-6 col-xxl-4 publications__col animation-slide-up is-init-animation"><a class="publication-card" href="#">
+                      <div class="publication-card__inner">
+                        <div class="publication-card__top">
+                          <div class="publication-card__img-wrap">
+                            <div class="publication-card__img" style="background-image: url('../img/publications/publications_2.jpg')"></div>
+                          </div>
+                        </div>
+                        <div class="publication-card__body">
+                          <div class="t-base t-base--size--medium t-base--weight--bold t-base--color--green-main publication-card__title">Влагозащитные покрытия</div>
+                          <div class="t-base t-base--size--title-3 publication-card__desc">Несколько простых шагов для организации процесса ультрафиолетового отверждения влагозащитного покрытия</div>
+                        </div>
+                      </div></a></div>
+                  <div class="col-12 col-sm-6 col-xxl-4 publications__col d-none d-xxl-block animation-slide-up is-init-animation"><a class="publication-card" href="#">
+                      <div class="publication-card__inner">
+                        <div class="publication-card__top">
+                                  <svg class="icon icon--play-button icon--size--xxl icon--color--white publication-card__icon">
+                                    <use xlink:href="/img/sprite.svg#play-button-usage"></use>
+                                  </svg>
+                          <div class="publication-card__img-wrap">
+                            <div class="publication-card__img" style="background-image: url('../img/publications/publications_1.jpg')"></div>
+                          </div>
+                        </div>
+                        <div class="publication-card__body">
+                          <div class="t-base t-base--size--medium t-base--weight--bold t-base--color--green-main publication-card__title">Влагозащитные покрытия</div>
+                          <div class="t-base t-base--size--title-3 publication-card__desc">Понимание термина паропроницаемости влагозащитных покрытий</div>
+                        </div>
+                      </div></a></div>
+                </div>
+              </div>
+              <div class="section__link d-sm-none"><a class="link link--animation" href="#"><span class="link__text t-base--size--medium t-base--weight--bold">Все публикации</span>
+                          <svg class="icon icon--arrow-long-right link__icon icon--size--xl icon--stroke--green-main">
+                            <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                          </svg></a></div>
+            </div>
+          </div>
+        </section>
+        <section class="section section--inner section--no--mt trainings trainings--border animation-pattern-lines">
+          <div class="animation-pattern-lines__svg" data-animation-pattern-lines="/animation-pattern-lines-ajax.html"></div>
+          <div class="section__wrapper">
+            <div class="section__container">
+              <div class="section__title section__title--flex">
+                <h2 class="t-base t-base--size--h2 d-flex align-items-center align-items-sm-start"> Тренинги и семинары
+                  <div class="count-mark t-base t-base--size--small">35</div>
+                </h2>
+                <div class="section__link d-none d-sm-block"><a class="link link--animation" href="#"><span class="link__text t-base--size--medium t-base--weight--bold">Все события</span>
+                            <svg class="icon icon--arrow-long-right link__icon icon--size--xl icon--stroke--green-main">
+                              <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                            </svg></a></div>
+              </div>
+              <div class="section__main">
+                <div class="slider-block slider-block--custom">
+                  <div class="row row--gap--60 slider-block__init slider-block__init--custom" data-in-sight>
+                    <div class="col-auto col-md-4 col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news card-block--trainings card-block--no-border" href="#">
+                        <div class="card-block__inner">
+                          <div class="dates t-base--weight--bold t-base--color--green-main card-block__dates">
+                            <div class="dates__days">26-28</div>
+                            <div class="dates__month">/01</div>
+                          </div>
+                          <div class="t-base t-base--size--large t-base--weight--bold card-block__desc">Тренинг IPC-A-610 «Критерии качества электронных сборок»</div>
+                          <div class="t-base--size--medium t-base--color--green-main link__text">Онлайн</div>
+                        </div></a></div>
+                    <div class="col-auto col-md-4 col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news card-block--trainings card-block--no-border" href="#">
+                        <div class="card-block__inner">
+                          <div class="dates t-base--weight--bold t-base--color--green-main card-block__dates">
+                            <div class="dates__days">3</div>
+                            <div class="dates__month">/12</div>
+                          </div>
+                          <div class="t-base t-base--size--large t-base--weight--bold card-block__desc">Вебинар «Современные решения в области герметизации и защиты электронных узлов»</div>
+                          <div class="t-base--size--medium t-base--color--green-main link__text">Онлайн</div>
+                        </div></a></div>
+                    <div class="col-auto col-md-4 col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news card-block--trainings card-block--no-border" href="#">
+                        <div class="card-block__inner">
+                          <div class="dates t-base--weight--bold t-base--color--green-main card-block__dates">
+                            <div class="dates__days">26</div>
+                            <div class="dates__month">/11</div>
+                          </div>
+                          <div class="t-base t-base--size--large t-base--weight--bold card-block__desc">Вебинар «Технологии влагозащиты печатных узлов, причины возникновения дефектов влагозащитных покрытий и их ремонт»</div>
+                          <div class="t-base--size--medium t-base--color--green-main link__text">Онлайн</div>
+                        </div></a></div>
+                    <div class="col-auto col-md-4 col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news card-block--trainings card-block--no-border" href="#">
+                        <div class="card-block__inner">
+                          <div class="dates t-base--weight--bold t-base--color--green-main card-block__dates">
+                            <div class="dates__days">12</div>
+                            <div class="dates__month">/11</div>
+                          </div>
+                          <div class="t-base t-base--size--large t-base--weight--bold card-block__desc">  Вебинар «Технологии влагозащиты печатных узлов, причины возникновения дефектов влагозащитных покрытий и их ремонт»</div>
+                          <div class="t-base--size--medium t-base--color--green-main link__text">Онлайн</div>
+                        </div></a></div>
+                    <div class="col-auto col-md-4 col-xxl-3 slider-block__slide slider-block__slide--custom animation-slide-up is-init-animation"><a class="card-block card-block--news card-block--trainings card-block--no-border" href="#">
+                        <div class="card-block__inner">
+                          <div class="dates t-base--weight--bold t-base--color--green-main card-block__dates">
+                            <div class="dates__days">27-29</div>
+                            <div class="dates__month">/10</div>
+                          </div>
+                          <div class="t-base t-base--size--large t-base--weight--bold card-block__desc">  Вебинар «Лучшие практики в области очистки печатных плат, трафаретов, контроля концентрации»</div>
+                          <div class="t-base--size--medium t-base--color--green-main link__text">Онлайн</div>
+                        </div></a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="section__link d-sm-none"><a class="link link--animation" href="#"><span class="link__text t-base--size--medium t-base--weight--bold">Все события</span>
+                          <svg class="icon icon--arrow-long-right link__icon icon--size--xl icon--stroke--green-main">
+                            <use xlink:href="/img/sprite.svg#arrow-long-right-usage"></use>
+                          </svg></a></div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!--  .is-float--right-bottom--on-product только для страницы продукта-->
+      <div class="is-float is-float--right-bottom is-float--right-bottom--on-product" data-float-button><a class="link link--color--dark-main link--animation--bounce" href="/callback-modal.html" data-modal>
+                          <svg class="icon icon--chat link__icon icon--size--xl">
+                            <use xlink:href="/img/sprite.svg#chat-usage"></use>
+                          </svg></a>
+      </div>
+      <footer class="section section--no--mt footer">
+        <div class="section__wrapper footer__wrapper">
+          <div class="row justify-content-between align-items-center footer__row align-items-lg-stretch">
+            <div class="col-auto d-none d-lg-block col-lg-5 footer__col--1">
+              <div class="footer__info">
+                <div class="footer__info-item"><a class="t-base t-base--size--h2 t-base--weight--bold link phone" href="tel:84957884444"><span class="link__text">+7 495 788-44-44</span></a></div>
+                <div class="footer__info-item"><a class="link link--color--dark-main" href="mailto:materials@ostec-group.ru"><span class="link__text">materials@ostec-group.ru</span></a></div>
+                <div class="footer__leaflet"><img src="img/leaflet.svg"></div>
+              </div>
+            </div>
+            <div class="col-auto col-lg-6 footer__col--2">
+              <div class="row justify-content-between">
+                <div class="col-9">
+                  <div class="row d-none d-lg-flex footer__nav">
+                    <div class="col-6 footer__nav-col">
+                      <div class="t-base t-base--size--large t-base--weight--bold footer__nav-title">Клиентам</div>
+                      <ul class="footer__nav-list">
+                        <li class="footer__nav-item"><span class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" data-footer-materials><span class="link__text">Материалы</span></span></li>
+                        <li class="footer__nav-item"><a class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" href="#"><span class="link__text">Услуги</span></a></li>
+                        <li class="footer__nav-item"><a class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" href="#"><span class="link__text">Техническая библиотека</span></a></li>
+                        <li class="footer__nav-item"><a class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" href="#"><span class="link__text">События</span></a></li>
+                      </ul>
+                    </div>
+                    <div class="col-6 footer__nav-col">
+                      <div class="t-base t-base--size--large t-base--weight--bold footer__nav-title">Компания Остек</div>
+                      <ul class="footer__nav-list">
+                        <li class="footer__nav-item"><a class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" href="#"><span class="link__text">О нас</span></a></li>
+                        <li class="footer__nav-item"><a class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" href="#"><span class="link__text">Контакты</span></a></li>
+                        <li class="footer__nav-item"><a class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" href="#"><span class="link__text">Пресс-центр</span></a></li>
+                        <li class="footer__nav-item"><a class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" href="#"><span class="link__text">Вопросы и ответы</span></a></li>
+                        <li class="footer__nav-item"><a class="link link--color--dark-main t-base t-base--size--medium footer__nav-link" href="#"><span class="link__text">Политика конфиденциальности</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <div class="footer__tagline"><img src="img/tagline.svg"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto col-lg-12 footer__col--3">
+              <div class="footer__bottom">
+                <div class="footer__bottom-left">
+                  <div class="t-base t-base--color--dark-55 t-base--size--medium">© ООО Предприятие Остек 2021</div>
+                </div>
+                <div class="footer__bottom-right"><a class="link link--color--dark-55 t-base--size--medium" href="https://braind.agency/?utm_source=portfolio&amp;utm_medium=ref&amp;utm_campaign=ostec-materials.ru&amp;utm_content=footer">
+                    <div class="link__text">Сделано в Braind</div></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./js/main.js" defer></script>
+    <script>
+      window.mobileMenuData = [
+      	{
+      		"group": "1", // Название группы на текущем уровне меню, все элементы в этой группе на этом уровне должны иметь это же значение
+      		"groupNoBorder": true, // Определяет что группа будет без разделяющей линии
+      		"id": 1, // Id пункта меню
+      		"text": "Материалы", // Текст пункта меню
+      		"top": true, // Определяет пункт на 1 уровне меню
+      		"bold": true, // Определяет выделение текста жирным
+      		"children": [2, 3, 4, 5, 6, 7] // список id потомков пункта меню
+      	},
+      	{
+      		"group": "1",
+      		"id": 2,
+      		"bold": true,
+      		"text": "Для микроэлектроники",
+      	},
+      	{
+      		"group": "1",
+      		"id": 3,
+      		"text": "Кристальное производство",
+      		"children": [21, 22, 23]
+      	},
+      	{
+      		"group": "1",
+      		"id": 4,
+      		"text": "Сборка и герметизация",
+      		"link": "/catalog", // Ссылка
+      		"children": []
+      	},
+      	{
+      		"group": "2",
+      		"id": 5,
+      		"bold": true,
+      		"text": "Для производства солнечных модулей",
+      	},
+      	{
+      		"group": "2",
+      		"id": 6,
+      		"text": "Производство фотовольтаической ячейки",
+      		"link": "/catalog",
+      		"children": []
+      	},
+      	{
+      		"group": "2",
+      		"id": 7,
+      		"text": "Сборка модуля",
+      		"link": "/catalog",
+      		"children": []
+      	},
+      	{
+      		"group": "1",
+      		"groupNoBorder": true,
+      		"id": 8,
+      		"text": "Услуги",
+      		"link": "/catalog",
+      		"top": true,
+      		"bold": true,
+      	},
+      	{
+      		"group": "1",
+      		"groupNoBorder": true,
+      		"id": 9,
+      		"text": "База знаний",
+      		"link": "/catalog",
+      		"top": true,
+      		"bold": true,
+      	},
+      	{
+      		"group": "1",
+      		"groupNoBorder": true,
+      		"id": 10,
+      		"text": "События",
+      		"link": "/catalog",
+      		"top": true,
+      		"bold": true,
+      	},
+      	{
+      		"group": "1",
+      		"groupNoBorder": true,
+      		"id": 11,
+      		"text": "Новости",
+      		"link": "/catalog",
+      		"top": true,
+      		"bold": true,
+      	},
+      	{
+      		"group": "1",
+      		"groupNoBorder": true,
+      		"id": 12,
+      		"text": "О нас",
+      		"link": "/catalog",
+      		"top": true,
+      	},
+      	{
+      		"group": "1",
+      		"groupNoBorder": true,
+      		"id": 13,
+      		"text": "Контакты",
+      		"link": "/catalog",
+      		"top": true,
+      	},
+      	{
+      		"group": "2",
+      		"groupBlue": true,
+      		"bold": true,
+      		"id": 14,
+      		"text": "Личный кабинет",
+      		"top": true,
+      	},
+      
+      	{
+      		"id": 15,
+      		"text": "Мои запросы",
+      		"link": "/catalog",
+      		"top": true,
+      		"group": "2",
+      		"groupBlue": true,
+      		"bold": true,
+      		"props": {
+      			"cart": true
+      		}
+      	},
+      	{
+      		"group": "3",
+      		"groupBlue": true,
+      		"id": 16,
+      		"text": "Всегда на связи",
+      		"gray": true,
+      		"top": true,
+      	},
+      	{
+      		"group": "3",
+      		"groupBlue": true,
+      		"id": 17,
+      		"text": "+7 495 788-44-44",
+      		"link": "/catalog",
+      		"top": true,
+      	},
+      	{
+      		"group": "3",
+      		"groupBlue": true,
+      		"id": 18,
+      		"text": "section-nav@ostec-group.ru",
+      		"link": "/catalog",
+      		"top": true,
+      	},
+      	{
+      		"group": "4",
+      		"groupBlue": true,
+      		"id": 19,
+      		"lang": "rus", // Для вывода кнопок переключения языка, указывать текущий язык
+      		"link": "/catalog",
+      		"top": true,
+      	},
+      	{
+      		"group": "5",
+      		"groupBlue": true,
+      		"id": 20,
+      		"text": "Интернет-проекты ГК Остек",
+      		"link": "/sites-modal.html", 
+      		"top": true,
+      		"modalButton": true, // Для вывода кнопки вызова модального окна
+      		"footer": true
+      	},
+      	{
+      		//- "group": "7",
+      		"id": 21,
+      		"text": "Текст 3 уровня меню",
+      		"link": "/link"
+      	},
+      	{
+      		//- "group": "7",
+      		"id": 22,
+      		"text": "Текст 3 уровня меню",
+      		"link": "/link"
+      	},
+      	{
+      		//- "group": "7",
+      		"id": 23,
+      		"text": "Текст 3 уровня меню",
+      		"link": "/link"
+      	}
+      
+      ]
+      window.cart = {
+      	count: 10,
+      	items: [1111,'22222']
+      }
+      window.SITE_TEMPLATE_PATH_JS = "/local/templates/ostec_main/"
+      window.cartAppData = {
+      	"actionURL": "/static/fakedata/cart/update.json",
+      	"items": [
+      		{
+      			"id": 1,
+      			"name": "PicoShot™C-1",
+      			"kind": "Гель-кондиционер",
+      			"link": "/link",
+      			"labels": [
+      				{
+      					"text": 'Новинка',
+      					"class": "label-item--bg--yellow-main"
+      				},
+      				{
+      					"text": 'Eco',
+      					"class": "label-item--bg--gray label-item--text--green"
+      				}
+      			],
+      			"files": [
+      				{
+      					"name": "Техническое описание (TDS)",
+      					"link": "/link",
+      					"weight": "1,6mb"
+      				},
+      				{
+      					"name": "Техническое описание (TDS)",
+      					"link": "/link",
+      					"weight": "1,6mb"
+      				}
+      			],
+      			"products": [
+      				{
+      					"id": "EFDOPTIUM301",
+      					"name": "Шприц EFD Optimum 30 см3",
+      					"quantity": 2,
+      					"min": 0,
+      					"max": 10,
+      					"step": 2
+      				},
+      				{
+      					"id": "EFDOPTIUM302",
+      					"name": "Шприц EFD Optimum 30 см3",
+      					"quantity": 1,
+      					"min": 0,
+      					"max": 10,
+      					"step": 1
+      				}
+      			]
+      
+      		},
+      	],
+      	"form": {
+      		"city": "",
+      		"company": "",
+      		"name": "",
+      		"phone": "",
+      		"email": "",
+      		"addition": ""
+      	}
+      }
+      
+    </script>
+  </body>
+</html>

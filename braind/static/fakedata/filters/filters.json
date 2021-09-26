@@ -1,0 +1,202 @@
+{
+	"FACET_FILTER": {
+		"ACTIVE_DATE": "Y",
+		"CHECK_PERMISSIONS": "Y"
+	},
+	"PRICES": {
+		"BASE": {
+			"ID": "1",
+			"CODE": "BASE",
+			"SORT": "100",
+			"BASE": "Y",
+			"XML_ID": "BASE",
+			"TITLE": "Розничная цена",
+			"~TITLE": "Розничная цена",
+			"SELECT": "CATALOG_GROUP_1",
+			"SELECT_EXTENDED": [
+				"PRICE_1",
+				"CURRENCY_1",
+				"SCALED_PRICE_1"
+			],
+			"CAN_VIEW": true,
+			"CAN_BUY": true
+		}
+	},
+	"PROPERTY_COUNT": "4",
+	"PROPERTY_ID_LIST": [
+		"5",
+		"10",
+		"11",
+		"12"
+	],
+	"SKU_PROPERTY_ID_LIST": [
+		"28",
+		"30",
+		"31",
+		"32"
+	],
+	"SKU_PROPERTY_COUNT": "3",
+	"ITEMS": {
+		"1": {
+			"ID": "1",
+			"NAME": "Производитель",
+			"VALUES": {
+				"1": {
+					"CONTROL_NAME": "1",
+					"HTML_VALUE": "1",
+					"VALUE": "Первый",
+					"CHECKED": true
+				},
+				"2": {
+					"CONTROL_NAME": "2",
+					"HTML_VALUE": "2",
+					"VALUE": "Второй"
+				}
+			}
+		},
+		"2": {
+			"ID": "2",
+			"NAME": "Метод нанесения",
+			"VALUES": {
+				"1": {
+					"CONTROL_NAME": "1",
+					"HTML_VALUE": "1",
+					"VALUE": "Первый2",
+					"CHECKED": true
+				},
+				"2": {
+					"CONTROL_NAME": "2",
+					"HTML_VALUE": "2",
+					"VALUE": "Второй",
+					"CHECKED": true
+				},
+				"3": {
+					"CONTROL_NAME": "3",
+					"HTML_VALUE": "3",
+					"VALUE": "Третий",
+					"CHECKED": true
+				}
+			}
+		},
+		"3": {
+			"ID": "3",
+			"NAME": "Тип паяльной пасты",
+			"VALUES": {
+				"1": {
+					"CONTROL_NAME": "1",
+					"HTML_VALUE": "1",
+					"VALUE": "Первый2",
+					"CHECKED": true
+				},
+				"2": {
+					"CONTROL_NAME": "2",
+					"HTML_VALUE": "2",
+					"VALUE": "Второй",
+					"CHECKED": true
+				},
+				"3": {
+					"CONTROL_NAME": "3",
+					"HTML_VALUE": "3",
+					"VALUE": "Третий",
+					"CHECKED": true
+				},
+				"4": {
+					"HTML_VALUE": "4",
+					"CONTROL_NAME": "4",
+					"VALUE": "Четвертый",
+					"CHECKED": true
+				},
+				"5": {
+					"CONTROL_NAME": "5",
+					"HTML_VALUE": "5",
+					"VALUE": "Пятый",
+					"CHECKED": true
+				}
+			}
+		},
+		"4": {
+			"ID": "4",
+			"NAME": "Производитель",
+			"VALUES": {
+				"1": {
+					"CONTROL_NAME": "1",
+					"HTML_VALUE": "1",
+					"VALUE": "Первый2",
+					"CHECKED": true
+				},
+				"2": {
+					"CONTROL_NAME": "3",
+					"HTML_VALUE": "2",
+					"VALUE": "Второй",
+					"CHECKED": true
+				},
+				"3": {
+					"CONTROL_NAME": "2",
+					"HTML_VALUE": "3",
+					"VALUE": "Третий",
+					"CHECKED": true
+				},
+				"4": {
+					"HTML_VALUE": "4",
+					"CONTROL_NAME": "4",
+					"VALUE": "Четвертый",
+					"CHECKED": true
+				},
+				"5": {
+					"CONTROL_NAME": "5",
+					"HTML_VALUE": "5",
+					"VALUE": "Пятый",
+					"CHECKED": true
+				}
+			}
+		},
+		"5": {
+			"ID": "5",
+			"NAME": "Производитель",
+			"VALUES": {
+				"1": {
+					"CONTROL_NAME": "1",
+					"HTML_VALUE": "1",
+					"VALUE": "Первый2",
+					"CHECKED": true
+				},
+				"2": {
+					"CONTROL_NAME": "2",
+					"HTML_VALUE": "2",
+					"VALUE": "Второй",
+					"CHECKED": true
+				},
+				"3": {
+					"CONTROL_NAME": "3",
+					"HTML_VALUE": "3",
+					"VALUE": "Третий",
+					"CHECKED": true
+				},
+				"4": {
+					"HTML_VALUE": "4",
+					"CONTROL_NAME": "4",
+					"VALUE": "Четвертый",
+					"CHECKED": true
+				},
+				"5": {
+					"CONTROL_NAME": "5",
+					"HTML_VALUE": "5",
+					"VALUE": "Пятый",
+					"CHECKED": true
+				}
+			}
+		}
+	},
+	"CURRENCIES": [],
+	"JS_FILTER_PARAMS": {
+		"SEF_SET_FILTER_URL": "/catalog/t-shirts/filter/price-base-from-800/sizes_clothes-is-a2f1730e4dacc24cae7fd200e20ecb15/apply/",
+		"SEF_DEL_FILTER_URL": "/catalog/t-shirts/filter/clear/apply/"
+	},
+	"FILTER_URL": "/materials.html?param1=1&param2=2",
+	"FILTER_AJAX_URL": "/static/fakedata/catalog/catalog.json",
+	"SEF_SET_FILTER_URL": "/catalog/t-shirts/filter/price-base-from-800/sizes_clothes-is-a2f1730e4dacc24cae7fd200e20ecb15/apply/",
+	"SEF_DEL_FILTER_URL": "/catalog/t-shirts/filter/clear/apply/",
+	"ELEMENT_COUNT": "11",
+	"FORM_ACTION": "/catalog/t-shirts/",
+	"HIDDEN": []
+}

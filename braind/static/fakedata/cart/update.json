@@ -1,0 +1,53 @@
+{
+    "success": true,
+    "count": 11,
+    "items": [
+        {
+            "id": 1,
+            "name": "PicoShot™C-1",
+            "kind": "Гель-кондиционер",
+            "link": "/link",
+            "labels": [
+                {
+                    "text": "Новинка",
+                    "class": "label-item--bg--yellow-main"
+                },
+                {
+                    "text": "Eco",
+                    "class": "label-item--bg--gray label-item--text--green"
+                }
+            ],
+            "files": [
+                {
+                    "name": "Техническое описание (TDS)",
+                    "link": "/link",
+                    "weight": "1,6mb"
+                },
+                {
+                    "name": "Техническое описание (TDS)",
+                    "link": "/link",
+                    "weight": "1,6mb"
+                }
+            ],
+            "products": [
+                {
+                    "id": "EFDOPTIUM301",
+                    "name": "Шприц EFD Optimum 30 см3",
+                    "quantity": 4,
+                    "min": 0,
+                    "max": 10,
+                    "step": 2
+                },
+                {
+                    "id": "EFDOPTIUM302",
+                    "name": "Шприц EFD Optimum 30 см3",
+                    "quantity": 0,
+                    "min": 0,
+                    "max": 10,
+                    "step": 1
+                }
+            ]
+
+        }
+    ]
+}
