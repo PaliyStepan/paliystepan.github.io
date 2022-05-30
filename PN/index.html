@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Test</title>
+	<meta name="theme-color" content="#fff">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="styles/main.min.css">
+
+</head>
+
+<body class="body">
+
+
+	<main class="main">
+		<div class="container">
+			<div class="filter-block">
+				<form action="" class="filter-block__form">
+					<div class="filter-block__top">
+                        <div class="filter-block__row">
+                            <div class="filter-block__col filter-block__col--search">
+                                <div class="search-block">
+                                    <input type="text" class="search-block__input"
+                                        placeholder="Введите ЖК / корпус / № квартиры / № паркинга">
+                                    <svg class="icon icon--gray icon--md search-block__icon">
+                                        <use xlink:href="img/sprites/sprite.svg#search-usage">
+                                        </use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="filter-block__col">
+                                <div class="dropdown filter-block__dropdown jsDropDown">
+                                    <div class="dropdown__trigger jsDropdownTrigger">
+                                        <div class="dropdown__trigger-title">
+                                            Все статусы
+                                        </div>
+                                        <svg class="icon dropdown__trigger-icon">
+                                            <use xlink:href="img/sprites/sprite.svg#chevron-usage">
+                                            </use>
+                                        </svg>
+                                    </div>
+                                    <div class="dropdown__body">
+                                        <div class="dropdown__inner">
+                                            <label class="checkbox dropdown__checkbox">
+                                                <input type="checkbox" class="checkbox__input">
+                                                <span class="checkbox__custom">
+                                                    <svg class="icon checkbox__icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#check-usage">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="checkbox__inner">
+                                                    <span class="checkbox__text">
+                                                        Забронировано
+                                                    </span>
+                                                </span>
+                                            </label>
+                                            <label class="checkbox dropdown__checkbox">
+                                                <input type="checkbox" class="checkbox__input">
+                                                <span class="checkbox__custom">
+                                                    <svg class="icon checkbox__icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#check-usage">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="checkbox__inner">
+                                                    <span class="checkbox__text">
+                                                        Продано
+                                                    </span>
+                                                </span>
+                                            </label>
+                                            <label class="checkbox dropdown__checkbox">
+                                                <input type="checkbox" class="checkbox__input">
+                                                <span class="checkbox__custom">
+                                                    <svg class="icon checkbox__icon">
+                                                        <use xlink:href="img/sprites/sprite.svg#check-usage">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                                <span class="checkbox__inner">
+                                                    <span class="checkbox__text">
+                                                        Активно
+                                                    </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-block__col">
+                                <a href="#" class="button">
+                                    <span class="text--sm button__text">
+                                        Очистить корзину
+                                    </span>
+                                    <svg class="icon icon--md button__icon">
+                                        <use xlink:href="img/sprites/sprite.svg#close-usage">
+                                        </use>
+                                    </svg>
+                                </a>
+                             </div>
+                        </div>
+					</div>
+					<div class="filter-block__bottom">
+						<label class="checkbox filter-block__all">
+							<input type="checkbox" class="checkbox__input">
+							<span class="checkbox__custom">
+								<svg class="icon checkbox__icon">
+									<use xlink:href="img/sprites/sprite.svg#check-usage">
+									</use>
+								</svg>
+							</span>
+							<span class="checkbox__inner">
+								<span class="checkbox__text">
+									все
+								</span>
+							</span>
+						</label>
+
+						<div class="filter-block__row">
+                            <div class="filter-block__col">
+                                <div class="button">
+                                    <div class="text--sm button__text">
+                                        Сохранить
+                                    </div>
+                                    <svg class="icon icon--md button__icon">
+                                        <use xlink:href="img/sprites/sprite.svg#pdf-usage">
+                                        </use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="filter-block__col">
+                                <div class="button">
+                                    <div class="text--sm button__text">
+                                        Отправить
+                                    </div>
+                                    <svg class="icon icon--md button__icon">
+                                        <use xlink:href="img/sprites/sprite.svg#send-usage">
+                                        </use>
+                                    </svg>
+                                </div>
+							</div>
+                            <div class="filter-block__col">
+                                <div class="button">
+                                    <div class="text--sm button__text">
+                                        Удалить
+                                    </div>
+                                    <svg class="icon icon--md button__icon">
+                                        <use xlink:href="img/sprites/sprite.svg#trash-usage">
+                                        </use>
+                                    </svg>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="result-block">
+				<div class="result-block__row">
+					<div class="result-block__col">
+						<div class="apartment-card">
+							<div class="apartment-card__checkbox">
+								<label class="checkbox">
+									<input type="checkbox" class="checkbox__input">
+									<span class="checkbox__custom">
+										<svg class="icon checkbox__icon">
+											<use xlink:href="img/sprites/sprite.svg#check-usage">
+											</use>
+										</svg>
+									</span>
+								</label>
+							</div>
+							<div class="apartment-card__body">
+								<div class="apartment-card__left">
+									<div class="apartment-card__header">
+										<div class="text--bold text--md text--color--red apartment-card__price">
+											7 733 300 руб.
+										</div>
+										<div class="badge apartment-card__badge">
+											<div class="badge__inner">
+												<svg class="icon icon--sm icon--gray badge__icon">
+													<use xlink:href="img/sprites/sprite.svg#floorplan-usage">
+													</use>
+												</svg>
+												<div class="text--xs badge__text">
+													Квартира
+												</div>
+												<div class="tooltip badge__tooltip">
+													<div class="text text--sm text--color--white ">
+														Подземная встроенно-пристроенная
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="text apartment-card__title">
+											Чистое Небо, <span class="text--color--gray-dark">корпус 10, III кв. 2022 г.</span>
+										</div>
+									</div>
+									<div class="apartment-card__characteristic">
+										<div class="apartment-card__characteristic-row">
+											<div class="apartment-card__characteristic-col">
+												<div class="text apartment-card__characteristic-item">
+													кв. 62
+												</div>
+												<div class="text apartment-card__characteristic-item">
+													1 комн. кв.
+												</div>
+											</div>
+											<div class="apartment-card__characteristic-col">
+												<div class="text apartment-card__characteristic-item">
+													234.38 м²
+												</div>
+												<div class="text apartment-card__characteristic-item">
+													7 этаж
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="address-block apartment-card__address">
+
+										<svg class="icon icon--sm icon--gray address-block__icon">
+											<use xlink:href="img/sprites/sprite.svg#pin-usage">
+											</use>
+										</svg>
+										<div class="address-block__inner">
+											<div class="text ">
+												Лен. область, Всеволожский район, <br>
+												д. Кудрово, ул. Столичная, д. 5, к. 1
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="apartment-card__right">
+									<div class="label label--red apartment-card__label">
+										<div class="label__dot"></div>
+										<div class="label__text">
+											Уступка от юр. лица
+										</div>
+									</div>
+
+									<div class="apartment-card__img-wrap">
+										<img src="img/apartment.png" alt="Чистое Небо, корпус 10, III кв. 2022 г."
+											class="apartment-card__img">
+									</div>
+
+									<div class="text--color--gray text--sm apartment-card__date">
+										Добавлено 21/11/2020
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="result-block__col">
+						<div class="apartment-card">
+							<div class="apartment-card__checkbox">
+								<label class="checkbox">
+									<input type="checkbox" class="checkbox__input">
+									<span class="checkbox__custom">
+										<svg class="icon checkbox__icon">
+											<use xlink:href="img/sprites/sprite.svg#check-usage">
+											</use>
+										</svg>
+									</span>
+								</label>
+							</div>
+							<div class="apartment-card__body">
+								<div class="apartment-card__left">
+									<div class="apartment-card__header">
+										<div class="text--bold text--md text--color--red apartment-card__price">
+											7 733 300 руб.
+										</div>
+										<div class="badge apartment-card__badge">
+											<div class="badge__inner">
+												<svg class="icon icon--sm icon--gray badge__icon">
+													<use xlink:href="img/sprites/sprite.svg#floorplan-usage">
+													</use>
+												</svg>
+												<div class="text--xs badge__text">
+													Квартира
+												</div>
+												<div class="tooltip badge__tooltip">
+													<div class="text text--sm text--color--white ">
+														Подземная встроенно-пристроенная
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="text apartment-card__title">
+											Зеленый квартал на Пулковских
+											высотах, <span class="text--color--gray-dark">корпус 10, III кв. 2022 г.</span>
+										</div>
+									</div>
+									<div class="apartment-card__characteristic">
+										<div class="apartment-card__characteristic-row">
+											<div class="apartment-card__characteristic-col">
+												<div class="text apartment-card__characteristic-item">
+													кв. 62
+												</div>
+												<div class="text apartment-card__characteristic-item">
+													1 комн. кв.
+												</div>
+											</div>
+											<div class="apartment-card__characteristic-col">
+												<div class="text apartment-card__characteristic-item">
+													234.38 м²
+												</div>
+												<div class="text apartment-card__characteristic-item">
+													7 этаж
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="address-block apartment-card__address">
+
+										<svg class="icon icon--sm icon--gray address-block__icon">
+											<use xlink:href="img/sprites/sprite.svg#pin-usage">
+											</use>
+										</svg>
+										<div class="address-block__inner">
+											<div class="text ">
+												Комендантский пр., уч. 1 Каменка
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="apartment-card__right">
+									<div class="label label--blue apartment-card__label">
+										<div class="label__dot"></div>
+										<div class="label__text">
+											Уступка от физ. лица
+										</div>
+									</div>
+
+									<div class="apartment-card__img-wrap">
+										<img src="img/apartment.png" alt="Чистое Небо, корпус 10, III кв. 2022 г."
+											class="apartment-card__img">
+									</div>
+
+									<div class="text--color--gray text--sm apartment-card__date">
+										Добавлено 21/11/2020
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="result-block__col">
+						<div class="apartment-card">
+							<div class="apartment-card__checkbox">
+								<label class="checkbox">
+									<input type="checkbox" class="checkbox__input">
+									<span class="checkbox__custom">
+										<svg class="icon checkbox__icon">
+											<use xlink:href="img/sprites/sprite.svg#check-usage">
+											</use>
+										</svg>
+									</span>
+								</label>
+							</div>
+							<div class="apartment-card__body">
+								<div class="apartment-card__left">
+									<div class="apartment-card__header">
+										<div class="text--bold text--md text--color--red apartment-card__price">
+											800 300 руб.
+										</div>
+										<div class="badge apartment-card__badge">
+											<div class="badge__inner">
+												<svg class="icon icon--sm icon--red badge__icon">
+													<use xlink:href="img/sprites/sprite.svg#car-usage">
+													</use>
+												</svg>
+												<div class="text--xs badge__text">
+													Паркинг
+												</div>
+												<div class="tooltip badge__tooltip">
+													<div class="text text--sm text--color--white ">
+														Подземная встроенно-пристроенная
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="text apartment-card__title">
+											Зеленый квартал на Пулковских
+											высотах, <span class="text--color--gray-dark">корпус 10, III кв. 2022 г.</span>
+										</div>
+									</div>
+									<div class="apartment-card__characteristic">
+										<div class="apartment-card__characteristic-row">
+											<div class="apartment-card__characteristic-col">
+												<div class="text apartment-card__characteristic-item">
+													№ 7-10-2 (ПИБ №68)
+												</div>
+											</div>
+											<div class="apartment-card__characteristic-col">
+												<div class="text apartment-card__characteristic-item">
+													15 м²
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="address-block apartment-card__address">
+
+										<svg class="icon icon--sm icon--gray address-block__icon">
+											<use xlink:href="img/sprites/sprite.svg#pin-usage">
+											</use>
+										</svg>
+										<div class="address-block__inner">
+											<div class="text">
+												Ленинградская область, Всеволожский <br> район, д. Кудрово, ул. Столичная,
+												<br>
+												д. 5, к. 1
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="apartment-card__right">
+									<div class="label apartment-card__label">
+										<div class="label__dot"></div>
+										<div class="label__text">
+											Забронировано
+										</div>
+									</div>
+
+									<div class="apartment-card__img-wrap">
+										<img src="img/apartment.png" alt="Чистое Небо, корпус 10, III кв. 2022 г."
+											class="apartment-card__img">
+									</div>
+
+									<div class="text--color--gray text--sm apartment-card__date">
+										Добавлено 21/11/2020
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="result-block__col">
+						<div class="apartment-card">
+							<div class="apartment-card__checkbox">
+								<label class="checkbox">
+									<input type="checkbox" class="checkbox__input">
+									<span class="checkbox__custom">
+										<svg class="icon checkbox__icon">
+											<use xlink:href="img/sprites/sprite.svg#check-usage">
+											</use>
+										</svg>
+									</span>
+								</label>
+							</div>
+							<div class="apartment-card__body">
+								<div class="apartment-card__left">
+									<div class="apartment-card__header">
+										<div class="text--bold text--md text--color--red apartment-card__price">
+											800 300 руб.
+										</div>
+										<div class="badge apartment-card__badge">
+											<div class="badge__inner">
+												<svg class="icon icon--sm icon--red badge__icon">
+													<use xlink:href="img/sprites/sprite.svg#car-usage">
+													</use>
+												</svg>
+												<div class="text--xs badge__text">
+													Паркинг
+												</div>
+												<div class="tooltip badge__tooltip">
+													<div class="text text--sm text--color--white ">
+														Подземная встроенно-пристроенная
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="text apartment-card__title">
+											Зеленый квартал на Пулковских
+											высотах, <span class="text--color--gray-dark">корпус 10, III кв. 2022 г.</span>
+										</div>
+									</div>
+									<div class="apartment-card__characteristic">
+										<div class="apartment-card__characteristic-row">
+											<div class="apartment-card__characteristic-col">
+												<div class="text apartment-card__characteristic-item">
+													№ 7-10-2 (ПИБ №68)
+												</div>
+											</div>
+											<div class="apartment-card__characteristic-col">
+												<div class="text apartment-card__characteristic-item">
+													15 м²
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="address-block apartment-card__address">
+
+										<svg class="icon icon--sm icon--gray address-block__icon">
+											<use xlink:href="img/sprites/sprite.svg#pin-usage">
+											</use>
+										</svg>
+										<div class="address-block__inner">
+											<div class="text">
+												Лен. область, Всеволожский район, <br>
+												д. Кудрово, ул. Столичная, д. 5, к. 1
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="apartment-card__right">
+									<div class="label label--gray apartment-card__label">
+										<div class="label__dot"></div>
+										<div class="label__text">
+											Продано
+										</div>
+									</div>
+
+									<div class="apartment-card__img-wrap">
+										<img src="img/apartment.png" alt="Чистое Небо, корпус 10, III кв. 2022 г."
+											class="apartment-card__img">
+									</div>
+
+									<div class="text--color--gray text--sm apartment-card__date">
+										Добавлено 21/11/2020
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+
+	<script src="js/main.min.js"></script>
+	<script src="js/vendor.min.js"></script>
+</body>
+
+</html>
