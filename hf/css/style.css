@@ -8654,10 +8654,22 @@ main.main {
           height: 4px;
           border-radius: 50%;
           background-color: #03161B; }
+    .jumbotron-modal__block--overflow ol {
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-left: 24px; }
+      .jumbotron-modal__block--overflow ol li {
+        position: relative;
+        margin-bottom: 8px;
+        font-size: 16px;
+        line-height: 24px; }
+        .jumbotron-modal__block--overflow ol li:last-of-type {
+          margin-bottom: 0; }
   @media only screen and (max-width: 1023px) {
     .jumbotron-modal--fixed--xl--100 {
       height: 100vh;
-      min-height: unset; } }
+      min-height: unset;
+      max-height: -webkit-fill-available; } }
 
 .jumbotron-action {
   position: relative;
@@ -9040,22 +9052,25 @@ main.main {
   position: fixed;
   z-index: 100;
   top: 0;
-  bottom: 0;
+  height: 100%;
   right: -100%;
-  pointer-events: none;
   -webkit-transition: right 0.3s ease;
   -o-transition: right 0.3s ease;
   transition: right 0.3s ease;
   width: 100%;
   max-width: 480px;
+  -webkit-overflow-scrolling: touch;
   overflow: auto; }
   .menu__inner {
     position: relative;
     background-color: #ffffff;
     padding: 64px 32px;
     z-index: 2;
-    min-height: 100vh;
-    pointer-events: auto; }
+    height: 100%;
+    overflow: auto; }
+    @media only screen and (max-width: 1023px) {
+      .menu__inner {
+        height: auto; } }
     @media only screen and (max-width: 767px) {
       .menu__inner {
         padding-bottom: 24px; } }
