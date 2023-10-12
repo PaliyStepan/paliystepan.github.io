@@ -9060,6 +9060,9 @@ main.main {
   max-width: 480px;
   -webkit-overflow-scrolling: touch;
   overflow: auto; }
+  @media only screen and (max-width: 1023px) {
+    .menu {
+      background-color: #ffffff; } }
   .menu__inner {
     position: relative;
     background-color: #ffffff;
@@ -10428,14 +10431,23 @@ a.breadcrumbs__link:hover {
 @media only screen and (max-width: 1023px) {
   .modal-dialog--xl--full {
     margin-top: 0;
+    margin-bottom: 0; } }
+
+@media only screen and (max-width: 1023px) {
+  .modal-dialog--xl--fixed {
+    margin-top: 0;
     margin-bottom: 0;
     height: -webkit-fill-available; }
-    .modal-dialog--xl--full .modal-content {
+    .modal-dialog--xl--fixed .modal-content {
       height: -webkit-fill-available; } }
 
 .modal-dialog {
   margin-left: auto;
   margin-right: auto; }
+
+@media only screen and (max-width: 1023px) {
+  .modal--basic {
+    background-color: #ffffff; } }
 
 .modal--basic .modal-dialog {
   width: 100%;
@@ -10443,6 +10455,10 @@ a.breadcrumbs__link:hover {
   @media only screen and (max-width: 1023px) {
     .modal--basic .modal-dialog {
       max-width: 100%; } }
+
+@media only screen and (max-width: 1023px) {
+  .modal--md {
+    background-color: #ffffff; } }
 
 .modal--md .modal-dialog {
   width: 100%;
