@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Главная</title>
+  <meta name="theme-color" content="#fff">
+  <link rel="shortcut icon" href="img/decorations/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="img/decorations/favicon_152.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/decorations/favicon_152.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/decorations/favicon_152.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	
+	<style>
+		* {
+			padding: 0 !important;
+			margin: 0 !important;
+		}
+		
+		canvas {
+			width: 100vw !important;
+			height: 100vh !important;
+		}
+		
+		.menu {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			position: absolute;
+			z-index: 20;
+			padding: 10px !important;
+		}
+		
+		.menu  button{
+			width: 250px;
+			height: 50px;
+			font-size: 20px;
+			background-color: greenyellow;
+			cursor: pointer;;
+		}
+	</style>
+<link href="css/index.css" rel="stylesheet"></head>
+
+  <body>
+	<main>
+		<div class="menu jsMenu">
+			<button class="jsMenuButton">
+				Sun
+			</button>
+		</div>
+		<canvas class="solar-system"></canvas>
+	</main>
+
+  <script defer src="script/index.js"></script></body>
+</html>
